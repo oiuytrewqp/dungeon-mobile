@@ -1,0 +1,86 @@
+https://copilot.microsoft.com/labs/experiments/3d-generations
+
+Main menu - continue, new, settings, exit
+Character setup
+Settings
+
+Enter a dungeon with a set of cards
+Use the cards to defeat the enemies and achieve goals
+Dungeon is hex grid
+Walls and closed doors block LOS
+Difficult terrain requires two movement points to enter
+Distance is calculated along hexes
+Player has consumables with one use per dungeon
+Each card has an attack and or movement
+Multiplayer
+Open chests
+Pick up gold dropped by monsters
+Monster size?
+Isometric view
+3D models
+Player stats dialog
+press to select and then press to play - card moves to side
+
+Battle view:
+Menu button
+Cards
+Dungeon and characters
+Attack locations
+Move locations
+Push locations
+Pull locations
+Player status billboard
+Enemy status billboard
+Player items as buttons
+Item use confirmation dialog
+Move confirmation dialog
+Attack confirmation dialog
+Push and pull confirmation dialogs
+Dungeon description and Victory conditions dialog
+
+Actions:
+Attack
+Move
+Push
+Pull
+Stun - skip turn 1x
+Poison - require antidote / heal
+Wound - requires bandages / heal
+fly - ignore obstacles during movement
+Fire - a constant location of fire damage
+Trap - a damage / action trap
+Immobilised - cant move 1x turn
+Blind - cannot attack but can move 1x turn
+
+player character with billboard
+enemies with billboards
+
+upgraded cards are shinier
+
+
+map
+-tiles
+-walls
+-obstacles
+-items
+-statics
+-monsters
+
+3d objects:
+-players
+-monsters
+-weapons
+-rocks
+-stone walls
+-stone floor
+-plaster walls
+-plaster floor
+-water
+-grass
+-mud
+-chest
+-moss (walls, floor, rocks)
+-trees
+-bushes
+-fire
+-

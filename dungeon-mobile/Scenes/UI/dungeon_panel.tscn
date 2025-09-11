@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dwie8os50c4o6"]
+
+[node name="DungeonPanel" type="PanelContainer"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
