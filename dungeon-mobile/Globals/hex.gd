@@ -1,3 +1,4 @@
+@tool
 extends Node
 
 # Axial coordinates (q, r) where q + r + s = 0

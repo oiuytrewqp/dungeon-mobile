@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctsxh5w0ffq61"]
+
+[ext_resource type="Script" uid="uid://cbr1b0u5nh7l1" path="res://Scenes/ground_map.gd" id="1_vib7d"]
+
+[node name="GroundMap" type="Node3D"]
+script = ExtResource("1_vib7d")

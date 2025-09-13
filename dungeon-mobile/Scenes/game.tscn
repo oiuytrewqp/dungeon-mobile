@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1wmrps5wjlii"]
+[gd_scene load_steps=10 format=3 uid="uid://d1wmrps5wjlii"]
 
 [ext_resource type="PackedScene" uid="uid://bg1hs6scq7c0k" path="res://Scenes/UI/cards_container.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://ctsxh5w0ffq61" path="res://Scenes/ground_map.tscn" id="1_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dwie8os50c4o6" path="res://Scenes/UI/dungeon_panel.tscn" id="1_i6g32"]
 [ext_resource type="PackedScene" uid="uid://cyh1dvtw11nen" path="res://Scenes/UI/player_details_panel.tscn" id="2_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://2qan1tuvbhxi" path="res://Scenes/UI/items_panel.tscn" id="3_v158k"]
@@ -11,7 +12,7 @@
 
 [node name="Game" type="Node3D"]
 
-[node name="GroundMap" type="Node3D" parent="."]
+[node name="GroundMap" parent="." instance=ExtResource("1_h4fw4")]
 
 [node name="WallsMap" type="Node3D" parent="."]
 
