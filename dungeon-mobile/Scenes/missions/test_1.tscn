@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdnb1v8crkpo7"]
+
+[ext_resource type="PackedScene" uid="uid://cjqx7ky04vbur" path="res://assets/missions/test1.gltf" id="1_uscyp"]
+[ext_resource type="PackedScene" uid="uid://bpo2l6t6sm14b" path="res://scenes/cells/spawn.tscn" id="2_1wdn1"]
+
+[node name="test1" instance=ExtResource("1_uscyp")]
+
+[node name="Spawn" parent="." index="8" instance=ExtResource("2_1wdn1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.00517, 0.1, 1.4445)

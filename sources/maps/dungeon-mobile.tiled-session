@@ -1,0 +1,43 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "test.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "Test.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 2
+        },
+        "test.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 288.66666666666663,
+                "y": 263
+            }
+        }
+    },
+    "last.exportedFilePath": "D:/Data/Projects/Business/dungeon-mobile/dungeon-mobile/Assets/levels",
+    "last.imagePath": "D:/Data/Projects/Business/dungeon-mobile/sources/maps/kenney_hexagon-pack/Spritesheets",
+    "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
+    "map.lastUsedFormat": "tmx",
+    "map.orientation": "4",
+    "openFiles": [
+        "test.tmx",
+        "Test.tsx"
+    ],
+    "project": "dungeon-mobile.tiled-project",
+    "recentFiles": [
+        "Test.tsx",
+        "test.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 140,
+        "width": 120
+    }
+}

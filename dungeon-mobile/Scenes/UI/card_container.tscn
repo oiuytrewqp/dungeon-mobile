@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://dxyugguu6q4oe"]
 
-[node name="CardContainer" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="CardContainer" type="PanelContainer"]
 offset_right = 40.0
 offset_bottom = 40.0

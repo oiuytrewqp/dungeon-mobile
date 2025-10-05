@@ -1,45 +1,90 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1wmrps5wjlii"]
+[gd_scene load_steps=4 format=3 uid="uid://c3w6ldytm4134"]
 
-[ext_resource type="PackedScene" uid="uid://bg1hs6scq7c0k" path="res://Scenes/UI/cards_container.tscn" id="1_ebmjs"]
-[ext_resource type="PackedScene" uid="uid://ctsxh5w0ffq61" path="res://Scenes/ground_map.tscn" id="1_h4fw4"]
-[ext_resource type="PackedScene" uid="uid://dwie8os50c4o6" path="res://Scenes/UI/dungeon_panel.tscn" id="1_i6g32"]
-[ext_resource type="PackedScene" uid="uid://cyh1dvtw11nen" path="res://Scenes/UI/player_details_panel.tscn" id="2_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://2qan1tuvbhxi" path="res://Scenes/UI/items_panel.tscn" id="3_v158k"]
-[ext_resource type="PackedScene" uid="uid://cf3j3dwcot6s7" path="res://Scenes/UI/confirmation_dialog.tscn" id="5_h4fw4"]
-[ext_resource type="PackedScene" uid="uid://cr6ynjic3cgau" path="res://Scenes/UI/menu_panel.tscn" id="6_ldgsr"]
-[ext_resource type="PackedScene" uid="uid://dxyugguu6q4oe" path="res://Scenes/UI/card_container.tscn" id="7_1l0tm"]
-[ext_resource type="PackedScene" uid="uid://rk35dw8p7mjr" path="res://Scenes/UI/discard_container.tscn" id="8_v158k"]
+[ext_resource type="PackedScene" uid="uid://s80u8h7wqin4" path="res://scenes/ui/profile_panel.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://ccxrnsph7t8l3" path="res://scenes/game.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://btq7tg04rb4fb" path="res://scenes/ui/missions_panel.tscn" id="3_lnu2h"]
 
-[node name="Game" type="Node3D"]
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqjtg")
 
-[node name="GroundMap" parent="." instance=ExtResource("1_h4fw4")]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="WallsMap" type="Node3D" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ObstaclesMap" type="Node3D" parent="."]
+[node name="TabPanel" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
 
-[node name="ItemsMap" type="Node3D" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabPanel"]
+layout_mode = 2
 
-[node name="StaticsMap" type="Node3D" parent="."]
+[node name="ProfileButton" type="Button" parent="VBoxContainer/TabPanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+text = "Profile"
 
-[node name="Monsters" type="Node3D" parent="."]
+[node name="ItemsButton" type="Button" parent="VBoxContainer/TabPanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Items"
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CardsButton" type="Button" parent="VBoxContainer/TabPanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Cards"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="MissionsButton" type="Button" parent="VBoxContainer/TabPanel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+toggle_mode = true
+text = "Missions"
 
-[node name="DungeonPanel" parent="CanvasLayer" instance=ExtResource("1_i6g32")]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="PlayerDetailsPanel" parent="CanvasLayer" instance=ExtResource("2_1l0tm")]
+[node name="ProfilePanel" parent="VBoxContainer/PanelContainer" instance=ExtResource("1_ebmjs")]
+unique_name_in_owner = true
+layout_mode = 2
 
-[node name="ItemsPanel" parent="CanvasLayer" instance=ExtResource("3_v158k")]
+[node name="ItemsPanel" type="PanelContainer" parent="VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
-[node name="CardsContainer" parent="CanvasLayer" instance=ExtResource("1_ebmjs")]
+[node name="CardsPanel" type="PanelContainer" parent="VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
-[node name="ConfirmationDialog" parent="CanvasLayer" instance=ExtResource("5_h4fw4")]
+[node name="MissionsPanel" parent="VBoxContainer/PanelContainer" instance=ExtResource("3_lnu2h")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
-[node name="MenuPanel" parent="CanvasLayer" instance=ExtResource("6_ldgsr")]
-
-[node name="CardContainer" parent="CanvasLayer" instance=ExtResource("7_1l0tm")]
-
-[node name="DiscardContainer" parent="CanvasLayer" instance=ExtResource("8_v158k")]
+[connection signal="pressed" from="VBoxContainer/TabPanel/HBoxContainer/ProfileButton" to="." method="_on_profile_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabPanel/HBoxContainer/ItemsButton" to="." method="_on_items_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabPanel/HBoxContainer/CardsButton" to="." method="_on_cards_pressed"]
+[connection signal="pressed" from="VBoxContainer/TabPanel/HBoxContainer/MissionsButton" to="." method="_on_missions_pressed"]

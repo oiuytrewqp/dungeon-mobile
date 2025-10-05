@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://dwie8os50c4o6"]
+[gd_scene load_steps=2 format=3 uid="uid://dwie8os50c4o6"]
+
+[ext_resource type="Script" uid="uid://mxcge6ecka60" path="res://scenes/ui/dungeon_panel.gd" id="1_k5mvf"]
 
 [node name="DungeonPanel" type="PanelContainer"]
 anchors_preset = 4
@@ -8,3 +10,7 @@ offset_top = -20.0
 offset_right = 40.0
 offset_bottom = 20.0
 grow_vertical = 2
+script = ExtResource("1_k5mvf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2

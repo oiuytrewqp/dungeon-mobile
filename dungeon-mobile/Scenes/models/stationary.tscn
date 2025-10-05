@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://to2wiakv00ha"]
-
-[ext_resource type="Script" uid="uid://c1wvuepioeq8o" path="res://Scenes/models/stationary.gd" id="1_lo33c"]
-
-[node name="Stationary" type="Node3D"]
-script = ExtResource("1_lo33c")

@@ -1,0 +1,23 @@
+{
+	"skeleton": {
+		"name": "Skeleton",
+		"health": {
+			"base": 5,
+			"level": 1
+		},
+		"attack": {
+			"base": 2,
+			"level": 0.5
+		},
+		"range": {
+			"base": 0,
+			"level": 0
+		},
+		"defence": {
+			"base": 1,
+			"level": 0.25
+		},
+		"abilities": [],
+		"cards": []
+	}
+}

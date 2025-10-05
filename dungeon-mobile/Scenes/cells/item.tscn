@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvjw3h07vpfp4"]
+
+[ext_resource type="PackedScene" uid="uid://ckxraealy15ia" path="res://assets/models/cell.gltf" id="1_hosv0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hosv0"]
+albedo_color = Color(1, 0, 1, 1)
+
+[node name="Item" instance=ExtResource("1_hosv0")]
+
+[node name="Cell" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_hosv0")

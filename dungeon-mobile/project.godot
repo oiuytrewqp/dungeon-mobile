@@ -11,13 +11,16 @@ config_version=5
 [application]
 
 config/name="dungeon-mobile"
+run/main_scene="uid://d1wmrps5wjlii"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Save="*res://Globals/save.gd"
-Data="*res://Globals/data.gd"
+Hex="*res://helpers/hex.gd"
+Config="*res://globals/config.gd"
+Save="*res://globals/save.gd"
+Data="*res://globals/data.gd"
 
 [display]
 

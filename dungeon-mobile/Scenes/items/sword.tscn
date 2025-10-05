@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cfdn1kxlloply"]
+
+[ext_resource type="PackedScene" uid="uid://5cywy4840led" path="res://assets/models/items/Sword.gltf" id="1_7pccy"]
+
+[node name="Sword" instance=ExtResource("1_7pccy")]

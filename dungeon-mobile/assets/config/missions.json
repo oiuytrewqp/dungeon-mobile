@@ -1,0 +1,65 @@
+{
+	"start": {
+		"name": "Start",
+		"description": "The start mission.",
+		"objective": "Kill all enemies.",
+		"enemies": "Sekeltons",
+		"image": "attack",
+		"file_name": "start",
+		"unlocks": [
+			"test"
+		],
+		"complete": {
+			"image": "start_complete",
+			"description": "You completed start.",
+			"rewards": [
+				{
+					"type": "gold",
+					"quantioty": 5
+				}
+			]
+		}
+	},
+	"test": {
+		"name": "Test",
+		"description": "A test mission.",
+		"objective": "Kill all enemies.",
+		"enemies": "Sekeltons",
+		"image": "attack",
+		"file_name": "test",
+		"unlocks": [
+			"test2"
+		],
+		"complete": {
+			"image": "test_complete",
+			"description": "You completed test.",
+			"rewards": [
+				{
+					"type": "item",
+					"item": "dagger"
+				},
+				{
+					"type": "gold",
+					"quantioty": 5
+				}
+			]
+		}
+	},
+	"test2": {
+		"name": "Test2",
+		"description": "Another test mission.",
+		"file_name": "test2",
+		"unlocks": [],
+		"complete": {
+			"image": "test_complete",
+			"description": "You completed test 2.",
+			"objective": "Kill all enemies.",
+			"enemies": "Sekeltons",
+			"rewards": [
+				{
+					"type": "end"
+				}
+			]
+		}
+	}
+}

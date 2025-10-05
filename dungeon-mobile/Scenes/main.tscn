@@ -1,0 +1,95 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgnl7v8x21y3w"]
+
+[ext_resource type="Script" uid="uid://dut1p532icy0" path="res://scenes/main.gd" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://eppgyrh52bl2" path="res://scenes/ui/dialogs/continue_dialog.tscn" id="3_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dubuemtyb7dur" path="res://scenes/ui/dialogs/new_dialog.tscn" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://dqpbbo1t3tkt0" path="res://scenes/ui/dialogs/settings_dialog.tscn" id="5_tipki"]
+
+[node name="Main" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o5qli")
+
+[node name="MainDialog" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MainDialog" type="PanelContainer" parent="MainDialog"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -50.5
+offset_right = 46.5
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainDialog/MainDialog"]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="MainDialog/MainDialog/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Continue"
+flat = true
+
+[node name="NewGameButton" type="Button" parent="MainDialog/MainDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "New Game"
+flat = true
+
+[node name="SettingsButton" type="Button" parent="MainDialog/MainDialog/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Settings"
+flat = true
+
+[node name="QuitButton" type="Button" parent="MainDialog/MainDialog/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Quit"
+flat = true
+
+[node name="ContinueDialog" parent="." instance=ExtResource("3_tefeu")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="NewDialog" parent="." instance=ExtResource("4_o6xl0")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="SettingsDialog" parent="." instance=ExtResource("5_tipki")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MainDialog/MainDialog/VBoxContainer/ContinueButton" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="MainDialog/MainDialog/VBoxContainer/NewGameButton" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="MainDialog/MainDialog/VBoxContainer/SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainDialog/MainDialog/VBoxContainer/QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="back" from="ContinueDialog" to="." method="show_main_dialog"]
+[connection signal="back" from="NewDialog" to="." method="show_main_dialog"]

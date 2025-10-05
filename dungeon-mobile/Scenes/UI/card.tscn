@@ -1,14 +1,20 @@
-[gd_scene format=3 uid="uid://gm24ipbi7327"]
+[gd_scene load_steps=2 format=3 uid="uid://gm24ipbi7327"]
+
+[ext_resource type="Script" uid="uid://bqrn2jijawcg2" path="res://scenes/ui/card.gd" id="1_02ykg"]
 
 [node name="Card" type="PanelContainer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 100.0
+offset_bottom = 140.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_02ykg")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Texture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(100, 140)
 layout_mode = 2
-
-[node name="TextureRect2" type="TextureRect" parent="."]
-layout_mode = 2
+expand_mode = 1
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

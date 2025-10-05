@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://qawns1ra2oeb"]
+
+[ext_resource type="Script" uid="uid://pjsy68g56e1v" path="res://scenes/ui/mission_container.gd" id="1_n5jwl"]
+
+[node name="MissionContainer" type="PanelContainer"]
+offset_right = 8.0
+offset_bottom = 50.0
+script = ExtResource("1_n5jwl")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Texture" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_pressed"]

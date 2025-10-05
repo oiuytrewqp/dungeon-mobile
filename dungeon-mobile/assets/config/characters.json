@@ -1,0 +1,162 @@
+{
+	"warrior": {
+		"type": "Warrior",
+		"description": "A mighty warrior.",
+		"profile": "ChibiMalePortrait",
+		"model": "chibi_male",
+		"health": {
+			"base": 10,
+			"level": 1
+		},
+		"levels": {
+			"0": {
+				"experience": 80,
+				"cards": {
+					"basic": {
+						"name": "Basic",
+						"description": "Basic move and attack.",
+						"card_image": "MoveCard",
+						"border_image": "BasicBorder",
+						"move": 3,
+						"attack": 1,
+						"action": {
+							"type": "attack",
+							"damage": 3,
+							"range": 0,
+							"targets": 1,
+							"pattern": "line_1"
+						}
+					},
+					"dash": {
+						"name": "Dash",
+						"description": "Dash move with block.",
+						"card_image": "DashCard",
+						"border_image": "WarriorBorder",
+						"move": 6,
+						"attack": 0,
+						"action": {
+							"type": "defence",
+							"defence": 1
+						}
+					},
+					"hide": {
+						"name": "Hide",
+						"description": "Shift and hide.",
+						"card_image": "HideCard",
+						"border_image": "SpecialBorder",
+						"move": 1,
+						"attack": 0,
+						"action": {
+							"type": "visible"
+						}
+					},
+					"run": {
+						"name": "Run",
+						"description": "Run.",
+						"card_image": "RunCard",
+						"border_image": "BasicBorder",
+						"move": 7,
+						"attack": 0
+					}
+				}
+			},
+			"1": {
+				"experience": 180,
+				"cards": {
+					"stand_guard": {
+						"name": "Stand Guard",
+						"description": "Stand your guard.",
+						"card_image": "DefendCard",
+						"border_image": "WarriorBorder",
+						"move": 0,
+						"attack": 0,
+						"action": {
+							"type": "defence",
+							"defence": 3
+						}
+					}
+				}
+			}
+		}
+	},
+	"mage": {
+		"type": "Mage",
+		"description": "A powerful mage.",
+		"profile": "ChibiFemalePortrait",
+		"model": "chibi_female",
+		"health": {
+			"base": 10,
+			"level": 1
+		},
+		"levels": {
+			"0": {
+				"experience": 80,
+				"cards": {
+					"basic": {
+						"name": "Basic",
+						"description": "Basic move and attack.",
+						"card_image": "MoveCard",
+						"border_image": "BasicBorder",
+						"move": 3,
+						"attack": 1,
+						"action": {
+							"type": "attack",
+							"damage": 3,
+							"range": 0,
+							"targets": 1,
+							"pattern": "line_1"
+						}
+					},
+					"dash": {
+						"name": "Dash",
+						"description": "Dash move with block.",
+						"card_image": "DashCard",
+						"border_image": "WarriorBorder",
+						"move": 6,
+						"attack": 0,
+						"action": {
+							"type": "defence",
+							"defence": 1
+						}
+					},
+					"hide": {
+						"name": "Hide",
+						"description": "Shift and hide.",
+						"card_image": "HideCard",
+						"border_image": "SpecialBorder",
+						"move": 1,
+						"attack": 0,
+						"action": {
+							"type": "visible"
+						}
+					},
+					"run": {
+						"name": "Run",
+						"description": "Run.",
+						"card_image": "RunCard",
+						"border_image": "BasicBorder",
+						"move": 7,
+						"attack": 0
+					}
+				}
+			},
+			"1": {
+				"experience": 180,
+				"cards": {
+					"stand_guard": {
+						"name": "Stand Guard",
+						"description": "Stand your guard.",
+						"card_image": "DefendCard",
+						"border_image": "WarriorBorder",
+						"move": 0,
+						"attack": 0,
+						"action": {
+							"type": "defence",
+							"defence": 3
+						}
+					}
+				}
+			}
+		}
+	}
+}

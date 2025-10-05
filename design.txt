@@ -1,8 +1,10 @@
-https://copilot.microsoft.com/labs/experiments/3d-generations
+build the whole level in blender so that its homogeneous
+polish the fighting
 
-Main menu - continue, new, settings, exit
-Character setup
-Settings
+
+HexHelper - helps the hex (instanced)
+
+https://copilot.microsoft.com/labs/experiments/3d-generations
 
 Enter a dungeon with a set of cards
 Use the cards to defeat the enemies and achieve goals
@@ -20,6 +22,17 @@ Isometric view
 3D models
 Player stats dialog
 press to select and then press to play - card moves to side
+
+
+Map builder:
+spawn
+move
+obstacle
+goal
+enemy
+door
+
+
 
 Battle view:
 Menu button
@@ -83,4 +96,18 @@ map
 -trees
 -bushes
 -fire
--
+- 
+
+
+
+
+
+what can a player do outside of a mission?
+profile - shows the character and details
+equip and unequip items - shows items with descriptions that can be equipped
+choose cards - level and unlocked cards and selected cards
+choose missions - list of missions with descriptions
+level up - simple level up and experience
+
+when at a shop level: buy and sell items
+

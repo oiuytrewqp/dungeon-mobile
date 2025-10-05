@@ -1,0 +1,10 @@
+{
+	"player": "Warrior",
+	"levels": [
+		{
+			"name": "Intro",
+			"description": "The intro mission.",
+			"unlocks": []
+		}
+	]
+}

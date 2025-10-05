@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpo2l6t6sm14b"]
+
+[ext_resource type="PackedScene" uid="uid://ckxraealy15ia" path="res://assets/models/cell.gltf" id="1_xk31o"]
+[ext_resource type="Script" uid="uid://b5a5c68awhjim" path="res://scenes/cells/spawn.gd" id="2_uxe8c"]
+[ext_resource type="PackedScene" uid="uid://c8aee4xldxh1q" path="res://helpers/hex.tscn" id="3_8wcoi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxe8c"]
+albedo_color = Color(0, 1, 0, 1)
+
+[node name="Spawn" instance=ExtResource("1_xk31o")]
+script = ExtResource("2_uxe8c")
+
+[node name="Cell" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_uxe8c")
+
+[node name="Hex" parent="." index="1" instance=ExtResource("3_8wcoi")]
