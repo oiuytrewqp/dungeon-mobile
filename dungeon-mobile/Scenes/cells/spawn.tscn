@@ -9,6 +9,7 @@ albedo_color = Color(0, 1, 0, 1)
 
 [node name="Spawn" instance=ExtResource("1_xk31o")]
 script = ExtResource("2_uxe8c")
+editor = false
 
 [node name="Cell" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_uxe8c")

@@ -9,7 +9,7 @@ var t = 0
 var old_position = Vector3.ZERO
 
 var data = {
-	"type": "spawn",
+	"type": "door",
 	"x": 0,
 	"y": 0,
 }

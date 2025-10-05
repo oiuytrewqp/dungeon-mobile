@@ -9,7 +9,7 @@ var t = 0
 var old_position = Vector3.ZERO
 
 var data = {
-	"type": "spawn",
+	"type": "move",
 	"x": 0,
 	"y": 0,
 }
@@ -21,7 +21,7 @@ func _process(delta):
 			if t > 0.5:
 				t = 0
 				
-				position.y = 0.15
+				position.y = 0.1
 				data.y = round(position.z / 1.495512)
 				position.z = data.y * 1.495512
 				var x = 0

@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b62824kft3qvw"]
+[gd_scene load_steps=4 format=3 uid="uid://b62824kft3qvw"]
 
 [ext_resource type="PackedScene" uid="uid://ckxraealy15ia" path="res://assets/models/cell.gltf" id="1_7wwlp"]
+[ext_resource type="Script" uid="uid://d0rsn3rc752cx" path="res://scenes/cells/goal.gd" id="2_3gown"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7wwlp"]
 albedo_color = Color(0, 0, 0, 1)
 
 [node name="Goal" instance=ExtResource("1_7wwlp")]
+script = ExtResource("2_3gown")
+editor = false
 
 [node name="Cell" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_7wwlp")

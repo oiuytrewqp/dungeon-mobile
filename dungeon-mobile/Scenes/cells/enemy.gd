@@ -4,18 +4,22 @@ extends Node3D
 @onready var hex = $Hex
 
 @export var editor = true
+@export_enum("skeleton", "necromancer") var type: String = "skeleton"
 
 var t = 0
 var old_position = Vector3.ZERO
 
 var data = {
-	"type": "spawn",
+	"type": "enemy",
 	"x": 0,
 	"y": 0,
+	"enemy": "skeleton"
 }
 
 func _process(delta):
 	if editor && Engine.is_editor_hint():
+		if data.enemy != type:
+			data.enemy = type
 		if t != null && position != old_position:
 			t += delta
 			if t > 0.5:
@@ -32,3 +36,5 @@ func _process(delta):
 					data.x = round((position.x + 0.865136) / 1.730272)
 					x = data.x * 1.730272 - 0.865136
 				position.x = x
+				
+				print(data.x, ", ", data.y)
