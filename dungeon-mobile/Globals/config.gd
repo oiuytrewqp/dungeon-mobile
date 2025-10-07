@@ -6,6 +6,7 @@ var enemies
 var characters
 var weapons
 var missions
+var cards
 
 var tile_lut = {
 		"floors": {
@@ -25,6 +26,7 @@ func _ready() -> void:
 	characters = _load_json("res://assets/config/characters.json")
 	weapons = _load_json("res://assets/config/weapons.json")
 	missions = _load_json("res://assets/config/missions.json")
+	cards = _load_json("res://assets/config/cards.json")
 
 func _load_json(file_path) -> Dictionary:
 	var json_string = FileAccess.get_file_as_string(file_path)

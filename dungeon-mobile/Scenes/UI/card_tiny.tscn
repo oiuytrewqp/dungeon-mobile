@@ -1,0 +1,103 @@
+[gd_scene load_steps=3 format=3 uid="uid://cybr6cwn00cx"]
+
+[ext_resource type="Script" uid="uid://dcmecsfll1xo0" path="res://scenes/ui/card_tiny.gd" id="1_3t0vx"]
+[ext_resource type="Texture2D" uid="uid://bjvkmbbeclp75" path="res://assets/cards/cardLarge.png" id="2_yktin"]
+
+[node name="CardTiny" type="PanelContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(100, 140)
+offset_right = 100.0
+offset_bottom = 140.0
+script = ExtResource("1_3t0vx")
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+texture = ExtResource("2_yktin")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="MoveLabel" type="Label" parent="VBoxContainer/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 0
+offset_left = -2.0
+offset_top = -4.0
+offset_right = 23.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+
+[node name="AttackLabel" type="Label" parent="VBoxContainer/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+offset_left = 78.0
+offset_top = -4.0
+offset_right = 103.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 24
+text = "0"
+horizontal_alignment = 1
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/Panel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -15.0
+offset_top = 8.0
+offset_right = 15.0
+offset_bottom = 58.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 12
+text = "Name of Card"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="DescriptionText" type="TextEdit" parent="VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 12
+text = "Basic move and attack."
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+virtual_keyboard_enabled = false
+middle_mouse_paste_enabled = false
+empty_selection_clipboard_enabled = false
+wrap_mode = 1
+
+[node name="BorderTexture" type="TextureRect" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 70)
+layout_mode = 2
+expand_mode = 1
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[connection signal="pressed" from="Button" to="." method="_on_pressed"]

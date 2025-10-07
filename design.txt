@@ -1,13 +1,12 @@
 set game states:
 
-1. placement
 2. player turn
 3. enemy turn
 
 check graph move locations
 check graph LOS
 
-
+create card like card large and use card large when selecting
 
 
 build the whole level in blender so that its homogeneous

@@ -8,6 +8,8 @@
 albedo_color = Color(0.211185, 0.1725, 0.0628788, 1)
 
 [node name="Door" instance=ExtResource("1_8ewkh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
+visible = false
 script = ExtResource("2_hro0l")
 editor = false
 

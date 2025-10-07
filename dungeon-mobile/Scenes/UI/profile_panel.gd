@@ -34,7 +34,7 @@ func update_character():
 	var cards = character.levels["0"].cards
 	for card_name in cards:
 		var new_card_small = CARD_SMALL.instantiate()
-		new_card_small.card = cards[card_name]
+		new_card_small.card = Config.cards[card_name]
 		new_card_small.card_pressed.connect(_card_pressed)
 		character_cards_contrainer.add_child(new_card_small)
 
@@ -49,7 +49,7 @@ func update_weapon() -> void:
 	var cards = weapon.levels["0"].cards
 	for card_name in cards:
 		var new_card_small = CARD_SMALL.instantiate()
-		new_card_small.card = cards[card_name]
+		new_card_small.card = Config.cards[card_name]
 		new_card_small.card_pressed.connect(_card_pressed)
 		weapon_cards_contrainer.add_child(new_card_small)
 

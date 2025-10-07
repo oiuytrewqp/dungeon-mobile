@@ -1,10 +1,14 @@
-extends HBoxContainer
+extends Control
 
 signal card_played(card)
 
-const CARD = preload("res://Scenes/UI/card.tscn")
+var CARD_TINY = preload("res://scenes/ui/card_tiny.tscn")
+
+@onready var container = %Container
 
 func _ready() -> void:
-	for i in 5:
-		var instance = CARD.instantiate()
-		add_child(instance)
+	for card in Data.data.character.deck:
+		var card_data = Config.cards[card]
+		var instance = CARD_TINY.instantiate()
+		instance.card = card_data
+		container.add_child(instance)
