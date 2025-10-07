@@ -36,9 +36,7 @@ func _mission_selected(mission):
 	enemies_label.text = "Enemies: %s" %mission_data.enemies
 
 func _on_go_pressed() -> void:
-	Data.data.current_mission = {
-		"name": selected_mission
-	}
+	Data.data.current_mission = selected_mission
 	
 	Data.save()
 	

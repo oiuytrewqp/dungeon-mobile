@@ -16,6 +16,26 @@ const CUBE_DIAGONALS = [
 	Vector3i(-2, +1, +1), Vector3i(-1, +2, -1), Vector3i(+1, +1, -2)
 ]
 
+func position_to_axial(location):
+	var x = 0
+	var y = round(location.z / 1.495512)
+	if int(y) & 1 == 0:
+		x = round(location.x / 1.730272)
+	else:
+		x = round((location.x + 0.865136) / 1.730272)
+	
+	return Vector2i(x, y)
+
+func axial_to_position(axial):
+	var x = 0
+	var y = axial.y * 1.495512
+	if int(axial.y) & 1 == 0:
+		x = axial.x * 1.730272
+	else:
+		x = axial.x * 1.730272 - 0.865136
+	
+	return Vector3(x, 0, y)
+
 # Convert offset to axial coordinates (odd-r offset)
 func offset_to_axial(offset: Vector2i) -> Vector2i:
 	@warning_ignore("integer_division")

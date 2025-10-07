@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1rx0xvkcss2m"]
+[gd_scene load_steps=5 format=3 uid="uid://d1rx0xvkcss2m"]
 
 [ext_resource type="PackedScene" uid="uid://ckxraealy15ia" path="res://assets/models/cell.gltf" id="1_i8ooa"]
 [ext_resource type="Script" uid="uid://cxp5s780lkqpk" path="res://scenes/cells/enemy.gd" id="2_bvk5b"]
+[ext_resource type="PackedScene" uid="uid://c8aee4xldxh1q" path="res://helpers/hex.tscn" id="3_4heor"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i8ooa"]
 albedo_color = Color(1, 0, 0, 1)
@@ -12,3 +13,5 @@ editor = false
 
 [node name="Cell" parent="." index="0"]
 surface_material_override/0 = SubResource("StandardMaterial3D_i8ooa")
+
+[node name="Hex" parent="." index="1" instance=ExtResource("3_4heor")]

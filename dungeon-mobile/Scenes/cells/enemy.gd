@@ -16,25 +16,23 @@ var data = {
 	"enemy": "skeleton"
 }
 
+func _ready() -> void:
+	visible = editor && Engine.is_editor_hint()
+	_update()
+
 func _process(delta):
 	if editor && Engine.is_editor_hint():
-		if data.enemy != type:
-			data.enemy = type
 		if t != null && position != old_position:
 			t += delta
 			if t > 0.5:
 				t = 0
 				
-				position.y = 0.15
-				data.y = round(position.z / 1.495512)
-				position.z = data.y * 1.495512
-				var x = 0
-				if int(data.y) & 1 == 0:
-					data.x = round(position.x / 1.730272)
-					x = data.x * 1.730272
-				else:
-					data.x = round((position.x + 0.865136) / 1.730272)
-					x = data.x * 1.730272 - 0.865136
-				position.x = x
-				
-				print(data.x, ", ", data.y)
+				_update()
+
+func _update():
+	var axial = hex.position_to_axial(position)
+	position = hex.axial_to_position(axial)
+	position.y = 0.15
+	data.enemy = type
+	data.x = axial.x
+	data.y = axial.y

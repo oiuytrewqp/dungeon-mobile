@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1wmrps5wjlii"]
+[gd_scene load_steps=12 format=3 uid="uid://d1wmrps5wjlii"]
 
+[ext_resource type="Script" uid="uid://bjb5y6ox2tvjv" path="res://scenes/mission.gd" id="1_7uqar"]
 [ext_resource type="PackedScene" uid="uid://bg1hs6scq7c0k" path="res://scenes/ui/cards_container.tscn" id="1_ebmjs"]
 [ext_resource type="PackedScene" uid="uid://cyh1dvtw11nen" path="res://scenes/ui/player_details_panel.tscn" id="2_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://c8aee4xldxh1q" path="res://helpers/hex.tscn" id="2_7uqar"]
 [ext_resource type="PackedScene" uid="uid://2qan1tuvbhxi" path="res://scenes/ui/items_panel.tscn" id="3_v158k"]
 [ext_resource type="PackedScene" uid="uid://cf3j3dwcot6s7" path="res://scenes/ui/confirmation_dialog.tscn" id="5_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://cr6ynjic3cgau" path="res://scenes/ui/dialogs/main_dialog.tscn" id="6_ldgsr"]
-[ext_resource type="PackedScene" uid="uid://bdnb1v8crkpo7" path="res://scenes/missions/test_1.tscn" id="7_0klfc"]
 [ext_resource type="PackedScene" uid="uid://dxyugguu6q4oe" path="res://scenes/ui/card_container.tscn" id="7_1l0tm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h4fw4"]
@@ -22,6 +23,9 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Mission" type="Node3D"]
+script = ExtResource("1_7uqar")
+
+[node name="Hex" parent="." instance=ExtResource("2_7uqar")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_o5yvi")
@@ -30,8 +34,6 @@ environment = SubResource("Environment_o5yvi")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
-[node name="test1" parent="." instance=ExtResource("7_0klfc")]
-
 [node name="ObstaclesMap" type="Node3D" parent="."]
 
 [node name="ItemsMap" type="Node3D" parent="."]
@@ -39,7 +41,7 @@ shadow_enabled = true
 [node name="Monsters" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.343234, 0.93925, 0, -0.93925, 0.343234, 7.02897, 10.1168, 14.0219)
+transform = Transform3D(1, 0, 0, 0, 0.343234, 0.93925, 0, -0.93925, 0.343234, 0, 10.117, 4.922)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -52,6 +54,7 @@ transform = Transform3D(1, 0, 0, 0, 0.343234, 0.93925, 0, -0.93925, 0.343234, 7.
 [node name="ConfirmationDialog" parent="CanvasLayer" instance=ExtResource("5_h4fw4")]
 
 [node name="MenuPanel" parent="CanvasLayer" instance=ExtResource("6_ldgsr")]
+visible = false
 
 [node name="CardContainer" parent="CanvasLayer" instance=ExtResource("7_1l0tm")]
 anchors_preset = 4

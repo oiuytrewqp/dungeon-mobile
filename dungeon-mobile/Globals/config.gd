@@ -28,7 +28,6 @@ func _ready() -> void:
 
 func _load_json(file_path) -> Dictionary:
 	var json_string = FileAccess.get_file_as_string(file_path)
-	var t = JSON.parse_string(json_string)
 	return JSON.parse_string(json_string)
 
 func get_tile_type(layer_name: String, tile_id: int) -> String:
