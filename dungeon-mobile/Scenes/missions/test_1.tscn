@@ -17,162 +17,208 @@ script = ExtResource("2_6mjpy")
 surface_material_override/0 = SubResource("StandardMaterial3D_vv4mt")
 
 [node name="Spawn" parent="." index="8" instance=ExtResource("2_1wdn1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.92109, 0.15, -2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.921088, 0.15, -2.991024)
+location = Vector2i(-3, -2)
 
 [node name="Spawn2" parent="." index="9" instance=ExtResource("2_1wdn1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.19082, 0.15, -2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.190816, 0.15, -2.991024)
+location = Vector2i(-2, -2)
 
 [node name="Move" parent="." index="10" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.78622, 0.1, -4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.786224, 0.1, -4.486536)
+location = Vector2i(-3, -3)
 
 [node name="Move2" parent="." index="11" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.05595, 0.1, -4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.055952, 0.1, -4.486536)
+location = Vector2i(-2, -3)
 
 [node name="Move3" parent="." index="12" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32568, 0.1, -4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32568, 0.1, -4.486536)
+location = Vector2i(-1, -3)
 
 [node name="Move4" parent="." index="13" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46054, 0.1, -2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.460544, 0.1, -2.991024)
+location = Vector2i(-1, -2)
 
 [node name="Move5" parent="." index="14" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.78622, 0.1, -1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.786224, 0.1, -1.495512)
+location = Vector2i(-4, -1)
 
 [node name="Move6" parent="." index="15" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.05595, 0.1, -1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.055952, 0.1, -1.495512)
+location = Vector2i(-3, -1)
 
 [node name="Move7" parent="." index="16" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32568, 0.1, -1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32568, 0.1, -1.495512)
+location = Vector2i(-2, -1)
 
 [node name="Move8" parent="." index="17" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.92109, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.921088, 0.1, 0)
+location = Vector2i(-4, 0)
 
 [node name="Move9" parent="." index="18" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.19082, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.190816, 0.1, 0)
+location = Vector2i(-3, 0)
 
 [node name="Move10" parent="." index="19" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46054, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.460544, 0.1, 0)
+location = Vector2i(-2, 0)
 
 [node name="Move11" parent="." index="20" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.05595, 0.1, 1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.055952, 0.1, 1.495512)
+location = Vector2i(-4, 1)
 
 [node name="Move12" parent="." index="21" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.92109, 0.1, 2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.921088, 0.1, 2.991024)
+location = Vector2i(-5, 2)
 
 [node name="Move13" parent="." index="22" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.19082, 0.1, 2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.190816, 0.1, 2.991024)
+location = Vector2i(-4, 2)
 
 [node name="Move14" parent="." index="23" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.46054, 0.1, 2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.460544, 0.1, 2.991024)
+location = Vector2i(-3, 2)
 
 [node name="Move15" parent="." index="24" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.78622, 0.1, 4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.786224, 0.1, 4.486536)
+location = Vector2i(-6, 3)
 
 [node name="Move16" parent="." index="25" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32568, 0.1, 4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32568, 0.1, 4.486536)
+location = Vector2i(-4, 3)
 
 [node name="Move17" parent="." index="26" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.865136, 0.1, 4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.865136, 0.1, 4.486536)
+location = Vector2i(-2, 3)
 
 [node name="Move18" parent="." index="27" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865136, 0.1, 4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865136, 0.1, 4.486536)
+location = Vector2i(-1, 3)
 
 [node name="Move19" parent="." index="28" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59541, 0.1, 4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.595408, 0.1, 4.486536)
+location = Vector2i(0, 3)
 
 [node name="Move20" parent="." index="29" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32568, 0.1, 4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32568, 0.1, 4.486536)
+location = Vector2i(1, 3)
 
 [node name="Move22" parent="." index="30" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 2.991024)
+location = Vector2i(-1, 2)
 
 [node name="Move23" parent="." index="31" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73027, 0.1, 2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.730272, 0.1, 2.991024)
+location = Vector2i(0, 2)
 
 [node name="Move24" parent="." index="32" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46054, 0.1, 2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.460544, 0.1, 2.991024)
+location = Vector2i(1, 2)
 
 [node name="Move25" parent="." index="33" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.19082, 0.1, 2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.190816, 0.1, 2.991024)
+location = Vector2i(2, 2)
 
 [node name="Move26" parent="." index="34" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.92109, 0.1, 2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.921088, 0.1, 2.991024)
+location = Vector2i(3, 2)
 
 [node name="Move27" parent="." index="35" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.865136, 0.1, 1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.865136, 0.1, 1.495512)
+location = Vector2i(-1, 1)
 
 [node name="Move28" parent="." index="36" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865136, 0.1, 1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865136, 0.1, 1.495512)
+location = Vector2i(0, 1)
 
 [node name="Move29" parent="." index="37" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59541, 0.1, 1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.595408, 0.1, 1.495512)
+location = Vector2i(1, 1)
 
 [node name="Move30" parent="." index="38" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32568, 0.1, 1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32568, 0.1, 1.495512)
+location = Vector2i(2, 1)
 
 [node name="Move31" parent="." index="39" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.05595, 0.1, 1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.055952, 0.1, 1.495512)
+location = Vector2i(3, 1)
 
 [node name="Move32" parent="." index="40" instance=ExtResource("3_usn03")]
 
 [node name="Move34" parent="." index="41" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73027, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.730272, 0.1, 0)
+location = Vector2i(1, 0)
 
 [node name="Move35" parent="." index="42" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.19082, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.190816, 0.1, 0)
+location = Vector2i(3, 0)
 
 [node name="Move36" parent="." index="43" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.92109, 0.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.921088, 0.1, 0)
+location = Vector2i(4, 0)
 
 [node name="Move38" parent="." index="44" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, -2.991024)
+location = Vector2i(1, -2)
 
 [node name="Move39" parent="." index="45" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73027, 0.1, -2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.730272, 0.1, -2.991024)
+location = Vector2i(2, -2)
 
 [node name="Move40" parent="." index="46" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46054, 0.1, -2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.460544, 0.1, -2.991024)
+location = Vector2i(3, -2)
 
 [node name="Move41" parent="." index="47" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.19082, 0.1, -2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.190816, 0.1, -2.991024)
+location = Vector2i(4, -2)
 
 [node name="Move42" parent="." index="48" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.92109, 0.1, -2.99102)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.921088, 0.1, -2.991024)
+location = Vector2i(5, -2)
 
 [node name="Move43" parent="." index="49" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865136, 0.1, -4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865136, 0.1, -4.486536)
+location = Vector2i(2, -3)
 
 [node name="Move44" parent="." index="50" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.59541, 0.1, -4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.595408, 0.1, -4.486536)
+location = Vector2i(3, -3)
 
 [node name="Move45" parent="." index="51" instance=ExtResource("3_usn03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32568, 0.1, -4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32568, 0.1, -4.486536)
+location = Vector2i(4, -3)
 
 [node name="Enemy" parent="." index="52" instance=ExtResource("4_euu0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.78622, 0.15, 1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.786224, 0.15, 1.495512)
 
 [node name="Enemy2" parent="." index="53" instance=ExtResource("4_euu0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32568, 0.15, 1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32568, 0.15, 1.495512)
 
 [node name="Enemy3" parent="." index="54" instance=ExtResource("4_euu0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.05595, 0.15, 4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.055952, 0.15, 4.486536)
 
 [node name="Enemy4" parent="." index="55" instance=ExtResource("4_euu0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.865136, 0.15, -4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.865136, 0.15, -4.486536)
 
 [node name="Enemy5" parent="." index="56" instance=ExtResource("4_euu0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46054, 0.15, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.460544, 0.15, 0)
 
 [node name="Enemy6" parent="." index="57" instance=ExtResource("4_euu0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.05595, 0.15, 4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.055952, 0.15, 4.486536)
 
 [node name="Enemy7" parent="." index="58" instance=ExtResource("4_euu0f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.05595, 0.15, -4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.055952, 0.15, -4.486536)
 
 [node name="Door" parent="." index="59" instance=ExtResource("5_q7pyt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.59541, 0.15, 4.48654)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.595408, 0.15, 4.486536)
+location = Vector2i(-3, 3)
 
 [node name="Door5" parent="." index="60" instance=ExtResource("5_q7pyt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865136, 0.15, -1.49551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865136, 0.15, -1.495512)
+visible = true
+location = Vector2i(1, -1)
 
 [node name="Light" parent="." index="62" instance=ExtResource("7_vv4mt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.24934, 0, -0.387814)

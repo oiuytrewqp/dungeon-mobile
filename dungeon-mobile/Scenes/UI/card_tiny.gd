@@ -1,6 +1,6 @@
 extends PanelContainer
 
-signal card_pressed(card)
+signal pressed(card)
 
 @onready var background_texture = %BackgroundTexture
 @onready var border_texture = %BorderTexture
@@ -12,12 +12,14 @@ signal card_pressed(card)
 var card
 
 func _ready() -> void:
-	background_texture.texture = load("res://assets/cards/%sTiny.png" %card.card_image)
-	border_texture.texture = load("res://assets/cards/%sTiny.png" %card.border_image)
-	move_label.text = str(int(card.move))
-	attack_label.text = str(int(card.attack))
-	name_label.text = card.name
-	description_edit.text = card.description
+	var card_data = Config.cards[card]
+	
+	background_texture.texture = load("res://assets/cards/%sTiny.png" %card_data.card_image)
+	border_texture.texture = load("res://assets/cards/%sTiny.png" %card_data.border_image)
+	move_label.text = str(int(card_data.move))
+	attack_label.text = str(int(card_data.attack))
+	name_label.text = card_data.name
+	description_edit.text = card_data.description
 
 func _on_pressed() -> void:
-	card_pressed.emit(card)
+	pressed.emit(card)

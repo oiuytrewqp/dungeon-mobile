@@ -1,5 +1,7 @@
 extends Control
 
+signal pressed(card)
+
 @onready var background_texture = %BackgroundTexture
 @onready var border_texture = %BorderTexture
 @onready var move_label = %MoveLabel
@@ -11,12 +13,18 @@ extends Control
 var card
 
 func _ready() -> void:
-	background_texture.texture = load("res://assets/cards/%sLarge.png" %card.card_image)
-	border_texture.texture = load("res://assets/cards/%sLarge.png" %card.border_image)
-	move_label.text = str(int(card.move))
-	attack_label.text = str(int(card.attack))
-	name_label.text = card.name
-	description_edit.text = card.description
+	var card_data = Config.cards[card]
+	
+	background_texture.texture = load("res://assets/cards/%sLarge.png" %card_data.card_image)
+	border_texture.texture = load("res://assets/cards/%sLarge.png" %card_data.border_image)
+	move_label.text = str(int(card_data.move))
+	attack_label.text = str(int(card_data.attack))
+	name_label.text = card_data.name
+	description_edit.text = card_data.description
 
 func _on_pressed() -> void:
+	pressed.emit(card)
+	queue_free()
+
+func _on_not_pressed() -> void:
 	queue_free()

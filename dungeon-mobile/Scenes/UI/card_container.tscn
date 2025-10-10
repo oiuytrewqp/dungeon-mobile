@@ -1,5 +1,38 @@
-[gd_scene format=3 uid="uid://dxyugguu6q4oe"]
+[gd_scene load_steps=2 format=3 uid="uid://dxyugguu6q4oe"]
+
+[ext_resource type="Script" uid="uid://bgpywxhuxo8hx" path="res://scenes/ui/card_container.gd" id="1_enogw"]
 
 [node name="CardContainer" type="PanelContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_enogw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MoveLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AttackLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AttackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Attack"
+
+[node name="ActionButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Action"
+
+[node name="ActionsContainer" type="VBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/AttackButton" to="." method="_choose_attack"]
+[connection signal="pressed" from="VBoxContainer/ActionButton" to="." method="_choose_action"]

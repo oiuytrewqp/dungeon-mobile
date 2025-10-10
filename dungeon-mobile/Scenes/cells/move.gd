@@ -4,6 +4,7 @@ extends Node3D
 @onready var hex = $Hex
 
 @export var editor = true
+@export var location: Vector2i = Vector2i.ZERO
 
 var t = 0
 var old_position = Vector3.ZERO
@@ -33,3 +34,4 @@ func _update():
 	position.y = 0.1
 	data.x = axial.x
 	data.y = axial.y
+	location = axial

@@ -46,6 +46,8 @@ transform = Transform3D(1, 0, 0, 0, 0.343234, 0.93925, 0, -0.93925, 0.343234, 0,
 [node name="ItemsPanel" parent="CanvasLayer" instance=ExtResource("3_v158k")]
 
 [node name="CardsContainer" parent="CanvasLayer" instance=ExtResource("1_ebmjs")]
+unique_name_in_owner = true
+visible = false
 
 [node name="ConfirmationDialog" parent="CanvasLayer" instance=ExtResource("5_h4fw4")]
 
@@ -59,3 +61,5 @@ anchor_bottom = 0.5
 offset_top = -20.0
 offset_bottom = 20.0
 grow_vertical = 2
+
+[connection signal="played" from="CanvasLayer/CardsContainer" to="." method="_on_card_played"]

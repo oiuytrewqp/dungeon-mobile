@@ -6,13 +6,15 @@
 		"border_image": "BasicBorder",
 		"move": 3,
 		"attack": 1,
-		"action": {
-			"type": "attack",
-			"damage": 3,
-			"range": 0,
-			"targets": 1,
-			"pattern": "line_1"
-		}
+		"actions": [
+			{
+				"type": "attack",
+				"damage": 3,
+				"range": 0,
+				"targets": 1,
+				"pattern": "line_1"
+			}
+		]
 	},
 	"warrior_dash": {
 		"name": "Dash",
@@ -21,10 +23,12 @@
 		"border_image": "WarriorBorder",
 		"move": 6,
 		"attack": 0,
-		"action": {
-			"type": "defence",
-			"defence": 1
-		}
+		"actions": [
+			{
+				"type": "defence",
+				"defence": 1
+			}
+		]
 	},
 	"warrior_hide": {
 		"name": "Hide",
@@ -33,9 +37,11 @@
 		"border_image": "SpecialBorder",
 		"move": 1,
 		"attack": 0,
-		"action": {
-			"type": "visible"
-		}
+		"actions": [
+			{
+				"type": "invisible"
+			}
+		]
 	},
 	"warrior_run": {
 		"name": "Run",
@@ -43,7 +49,8 @@
 		"card_image": "RunCard",
 		"border_image": "BasicBorder",
 		"move": 7,
-		"attack": 0
+		"attack": 0,
+		"actions": []
 	},
 	"warrior_stand_guard": {
 		"name": "Stand Guard",
@@ -52,10 +59,12 @@
 		"border_image": "WarriorBorder",
 		"move": 0,
 		"attack": 0,
-		"action": {
-			"type": "defence",
-			"defence": 3
-		}
+		"actions": [
+			{
+				"type": "defence",
+				"defence": 3
+			}
+		]
 	},
 	"mage_basic": {
 		"name": "Basic",
@@ -64,13 +73,15 @@
 		"border_image": "BasicBorder",
 		"move": 3,
 		"attack": 1,
-		"action": {
-			"type": "attack",
-			"damage": 3,
-			"range": 0,
-			"targets": 1,
-			"pattern": "line_1"
-		}
+		"actions": [
+			{
+				"type": "attack",
+				"damage": 3,
+				"range": 0,
+				"targets": 1,
+				"pattern": "line_1"
+			}
+		]
 	},
 	"mage_dash": {
 		"name": "Dash",
@@ -79,10 +90,12 @@
 		"border_image": "WarriorBorder",
 		"move": 6,
 		"attack": 0,
-		"action": {
-			"type": "defence",
-			"defence": 1
-		}
+		"actions": [
+			{
+				"type": "defence",
+				"defence": 1
+			}
+		]
 	},
 	"mage_hide": {
 		"name": "Hide",
@@ -91,9 +104,11 @@
 		"border_image": "SpecialBorder",
 		"move": 1,
 		"attack": 0,
-		"action": {
-			"type": "visible"
-		}
+		"actions": [
+			{
+				"type": "invisible"
+			}
+		]
 	},
 	"mage_run": {
 		"name": "Run",
@@ -101,7 +116,8 @@
 		"card_image": "RunCard",
 		"border_image": "BasicBorder",
 		"move": 7,
-		"attack": 0
+		"attack": 0,
+		"actions": []
 	},
 	"dagger_slash": {
 		"name": "Slash",
@@ -110,13 +126,15 @@
 		"border_image": "DaggerBorder",
 		"move": 1,
 		"attack": 2,
-		"action": {
-			"type": "attack",
-			"damage": 5,
-			"range": 0,
-			"targets": 2,
-			"pattern": "line_1"
-		}
+		"actions": [
+			{
+				"type": "attack",
+				"damage": 5,
+				"range": 0,
+				"targets": 2,
+				"pattern": "line_1"
+			}
+		]
 	},
 	"dagger_slice": {
 		"name": "Slice",
@@ -125,12 +143,14 @@
 		"border_image": "DaggerBorder",
 		"move": 1,
 		"attack": 3,
-		"action": {
-			"type": "attack",
-			"damage": 4,
-			"range": 0,
-			"targets": 2,
-			"pattern": "line_2"
-		}
+		"actions": [
+			{
+				"type": "attack",
+				"damage": 4,
+				"range": 0,
+				"targets": 2,
+				"pattern": "line_2"
+			}
+		]
 	}
 }

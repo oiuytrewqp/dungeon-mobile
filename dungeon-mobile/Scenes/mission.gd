@@ -1,9 +1,8 @@
 extends Node3D
 
-var CARD_LARGE = preload("res://scenes/ui/card_large.tscn")
-
 @onready var hex = $Hex
 @onready var camera = $Camera3D
+@onready var card_container = %CardsContainer
 
 var graph = {}
 var enemies = {}
@@ -60,6 +59,34 @@ func _spawn_chosen(location):
 	add_child(new_character)
 	new_character.position = hex.axial_to_position(location)
 	new_character.get_node("rig").rotation_degrees = Vector3(0, randf() * 360, 0)
-	character = new_character
+	character.location = {
+		"x": location.x,
+		"y": location.y
+	}
 	
-	camera.reparent(character, false)
+	camera.reparent(new_character, false)
+	
+	card_container.visible = true
+
+func _on_card_played(card: Variant) -> void:
+	Data.play_card(card)
+	
+	var card_data = Config.cards[card]
+	if card_data.move == 0:
+		return
+	
+	var character = Data.data.character
+	
+	var blocked = []
+	for axial in enemies:
+		blocked.append(axial)
+	
+	var reachable = hex.reachable(Vector2i(character.location.x, character.location.y), card_data.move, blocked)
+	
+	#print(character.location)
+	
+	for moveable in reachable:
+		var new_moveable = load("res://scenes/moveable.tscn").instantiate()
+		new_moveable.position = hex.axial_to_position(moveable)
+		add_child(new_moveable)
+		#print(moveable)

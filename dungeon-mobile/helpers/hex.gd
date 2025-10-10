@@ -22,17 +22,18 @@ func position_to_axial(location):
 	if int(y) & 1 == 0:
 		x = round(location.x / 1.730272)
 	else:
-		x = round((location.x + 0.865136) / 1.730272)
+		x = round((location.x - 0.865136) / 1.730272)
 	
-	return Vector2i(x, y)
+	return offset_to_axial(Vector2i(x, y))
 
 func axial_to_position(axial):
+	var offset = axial_to_offset(axial)
 	var x = 0
-	var y = axial.y * 1.495512
-	if int(axial.y) & 1 == 0:
-		x = axial.x * 1.730272
+	var y = offset.y * 1.495512
+	if int(offset.y) & 1 == 0:
+		x = offset.x * 1.730272
 	else:
-		x = axial.x * 1.730272 - 0.865136
+		x = offset.x * 1.730272 + 0.865136
 	
 	return Vector3(x, 0, y)
 
@@ -133,11 +134,14 @@ func line(a: Vector2i, b: Vector2i) -> Array[Vector2i]:
 func neighbors(axial: Vector2i) -> Array[Vector2i]:
 	var cube = axial_to_cube(axial)
 	var result: Array[Vector2i] = []
+	print(cube)
 	
 	for dir_vec in CUBE_DIRECTIONS:
 		var neighbor = cube + dir_vec
+		print(neighbor)
 		result.append(cube_to_axial(neighbor))
 	
+	print(result)
 	return result
 
 # Get all diagonal neighbors of a hex
@@ -152,21 +156,22 @@ func diagonals(axial: Vector2i) -> Array[Vector2i]:
 	return result
 
 # Find all reachable hexes within a given movement range
-func reachable(start: Vector2i, movement: int, blocked: Array = []) -> Array[Vector2i]:
+func reachable(start: Vector2i, movement: int, blocked: Array = []) -> Array:
 	var visited: Dictionary = {}
 	var fringes: Array[Array] = []
 	
-	visited[str(start)] = start
+	visited[start] = start
 	fringes.append([start])
 	
 	for k in range(1, movement + 1):
 		fringes.append([])
 		for hex in fringes[k - 1]:
 			for neighbor in neighbors(hex):
-				var key = str(neighbor)
-				if not key in visited and not _is_blocked(neighbor, blocked):
-					visited[key] = neighbor
+				if not neighbor in visited and not _is_blocked(neighbor, blocked):
+					visited[neighbor] = neighbor
 					fringes[k].append(neighbor)
+	
+	visited.erase(start)
 	
 	return visited.values()
 
