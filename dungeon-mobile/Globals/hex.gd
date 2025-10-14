@@ -134,14 +134,11 @@ func line(a: Vector2i, b: Vector2i) -> Array[Vector2i]:
 func neighbors(axial: Vector2i) -> Array[Vector2i]:
 	var cube = axial_to_cube(axial)
 	var result: Array[Vector2i] = []
-	print(cube)
 	
 	for dir_vec in CUBE_DIRECTIONS:
 		var neighbor = cube + dir_vec
-		print(neighbor)
 		result.append(cube_to_axial(neighbor))
 	
-	print(result)
 	return result
 
 # Get all diagonal neighbors of a hex
@@ -156,7 +153,7 @@ func diagonals(axial: Vector2i) -> Array[Vector2i]:
 	return result
 
 # Find all reachable hexes within a given movement range
-func reachable(start: Vector2i, movement: int, blocked: Array = []) -> Array:
+func reachable(start: Vector2i, movement: int, blocked: Array = []) -> Array[Vector2i]:
 	var visited: Dictionary = {}
 	var fringes: Array[Array] = []
 	
@@ -173,7 +170,11 @@ func reachable(start: Vector2i, movement: int, blocked: Array = []) -> Array:
 	
 	visited.erase(start)
 	
-	return visited.values()
+	var locations : Array[Vector2i] = []
+	for visited_location in visited.values():
+		locations.append(visited_location)
+	
+	return locations
 
 # Helper function to check if a hex is blocked
 func _is_blocked(hex: Vector2i, blocked: Array) -> bool:

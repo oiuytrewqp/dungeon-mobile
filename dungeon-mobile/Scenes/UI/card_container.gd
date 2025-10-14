@@ -17,7 +17,7 @@ func _update():
 	
 	var card_data = Config.cards[Data.data.character.playing.card]
 	name_label.text = card_data.name
-	move_label.text = "Move: %s" %card_data.move
+	move_label.text = "Move: %s" %card_data.moves
 	attack_label.text = "Atack: %s" %card_data.attack
 	
 	for action in card_data.actions:

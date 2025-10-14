@@ -7,6 +7,9 @@ var location
 
 var is_selected = false
 
+func _ready() -> void:
+	position = Game.axial_to_position(location)
+
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventScreenTouch:
 		if event.pressed:

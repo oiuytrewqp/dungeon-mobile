@@ -4,6 +4,10 @@
 		"description": "A mighty warrior.",
 		"profile": "ChibiMalePortrait",
 		"model": "male",
+		"gold": 10,
+		"armor": null,
+		"consumables": [],
+		"items": [],
 		"health": {
 			"base": 10,
 			"level": 1
@@ -31,6 +35,10 @@
 		"description": "A powerful mage.",
 		"profile": "ChibiFemalePortrait",
 		"model": "female",
+		"gold": 10,
+		"armor": null,
+		"consumables": [],
+		"items": [],
 		"health": {
 			"base": 10,
 			"level": 1

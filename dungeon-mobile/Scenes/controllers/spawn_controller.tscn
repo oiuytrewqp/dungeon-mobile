@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://u4qqoy6k5ryg"]
+
+[ext_resource type="Script" uid="uid://3hi8rmaquyim" path="res://scenes/controllers/spawn_controller.gd" id="1_u4u88"]
+
+[node name="SpawnController" type="Node3D"]
+script = ExtResource("1_u4u88")

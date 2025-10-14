@@ -57,9 +57,9 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-text = "Character Cards:"
+text = "Cards:"
 
-[node name="CharacterCardsContainer" type="GridContainer" parent="PanelContainer/VBoxContainer"]
+[node name="CardsContainer" type="GridContainer" parent="PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 columns = 7
@@ -70,15 +70,6 @@ layout_mode = 2
 [node name="WeaponTypeLabel" type="Label" parent="PanelContainer/VBoxContainer/CenterContainer3"]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer"]
-layout_mode = 2
-text = "Weapon Cards:"
-
-[node name="WeaponCardsContainer" type="GridContainer" parent="PanelContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-columns = 7
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2

@@ -9,7 +9,13 @@ var CARD_LARGE = preload("res://scenes/ui/card_large.tscn")
 
 func _ready() -> void:
 	_update()
-	Data.hand_updated.connect(_update)
+	
+	Game.on_character_spawned.connect(_show)
+	
+	Game.hand_updated.connect(_update)
+
+func _show():
+	visible = true
 
 func _update():
 	for child in container.get_children():

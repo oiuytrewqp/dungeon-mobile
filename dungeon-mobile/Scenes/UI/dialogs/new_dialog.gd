@@ -1,7 +1,5 @@
 extends Control
 
-signal back()
-
 var CARD_SMALL = preload("res://scenes/ui/card_small.tscn")
 var CARD_LARGE = preload("res://scenes/ui/card_large.tscn")
 
@@ -90,9 +88,9 @@ func _on_name_text_changed(new_text: String) -> void:
 	ok_button.disabled = character_name.length() == 0
 
 func _on_back_pressed() -> void:
-	back.emit()
+	get_tree().change_scene_to_file("res://scenes/ui/dialogs/menu_dialog.tscn")
 
 func _on_ok_pressed() -> void:
-	Data.new_save(Config.characters.keys()[character_index], character_name, Config.weapons.keys()[weapon_index])
+	Game.new_save(Config.characters.keys()[character_index], character_name, Config.weapons.keys()[weapon_index])
 	
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	get_tree().change_scene_to_file("res://scenes/main.tscn")

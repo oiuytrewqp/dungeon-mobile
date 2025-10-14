@@ -1,35 +1,51 @@
-extends TextureRect
+extends Control
 
-@onready var main_dialog = %MainDialog
-@onready var continue_dialog = %ContinueDialog
-@onready var new_dialog = %NewDialog
-@onready var settings_dialog = %SettingsDialog
-@onready var continue_button = %ContinueButton
-@onready var quit_button = %QuitButton
+@onready var profile_button = %ProfileButton
+@onready var items_button = %ItemsButton
+@onready var cards_button = %CardsButton
+@onready var missions_button = %MissionsButton
 
-@export var show_quit = true
+@onready var profile_panel = %ProfilePanel
+@onready var items_panel = %ItemsPanel
+@onready var cards_panel = %CardsPanel
+@onready var missions_panel = %MissionsPanel
 
-func _ready() -> void:
-	quit_button.visible = show_quit
-	continue_button.visible = Data.data != null
+func _on_profile_pressed() -> void:
+	items_button.button_pressed = false
+	cards_button.button_pressed = false
+	missions_button.button_pressed = false
+	
+	profile_panel.visible = true
+	items_panel.visible = false
+	cards_panel.visible = false
+	missions_panel.visible = false
 
-func show_main_dialog() -> void:
-	main_dialog.visible = true
-	continue_dialog.visible = false
-	new_dialog.visible = false
-	settings_dialog.visible = false
+func _on_items_pressed() -> void:
+	profile_button.button_pressed = false
+	cards_button.button_pressed = false
+	missions_button.button_pressed = false
+	
+	profile_panel.visible = false
+	items_panel.visible = true
+	cards_panel.visible = false
+	missions_panel.visible = false
 
-func _on_continue_pressed() -> void:
-	main_dialog.visible = false
-	continue_dialog.visible = true
+func _on_cards_pressed() -> void:
+	profile_button.button_pressed = false
+	items_button.button_pressed = false
+	missions_button.button_pressed = false
+	
+	profile_panel.visible = false
+	items_panel.visible = false
+	cards_panel.visible = true
+	missions_panel.visible = false
 
-func _on_new_game_pressed() -> void:
-	main_dialog.visible = false
-	new_dialog.visible = true
-
-func _on_settings_pressed() -> void:
-	main_dialog.visible = false
-	settings_dialog.visible = true
-
-func _on_quit_pressed() -> void:
-	get_tree().quit()
+func _on_missions_pressed() -> void:
+	profile_button.button_pressed = false
+	items_button.button_pressed = false
+	cards_button.button_pressed = false
+	
+	profile_panel.visible = false
+	items_panel.visible = false
+	cards_panel.visible = false
+	missions_panel.visible = true

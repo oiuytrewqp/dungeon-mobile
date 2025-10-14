@@ -1,7 +1,23 @@
-set game states:
+states:
+1. no save
+2. no mission
+3. character not spawned
+4. no card selected
+5. moves available
+6. attack / actions not chosen
+7. for attack, no target attacked
+8. for actions, list of actions still available
+9. enemies perform actions
+10. repeat 4
 
-2. player turn
-3. enemy turn
+
+data
+-character (Character)
+-previous_mission (Array[String])
+-completed_missions (Array[String])
+-current_mission (Mission)
+
+
 
 check graph move locations
 check graph LOS

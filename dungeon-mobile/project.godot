@@ -17,10 +17,11 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Hex="*res://helpers/hex.gd"
+Hex="*res://globals/hex.gd"
+Pathfinding="*res://globals/pathfinding.gd"
 Config="*res://globals/config.gd"
 Save="*res://globals/save.gd"
-Data="*res://globals/data.gd"
+Game="*res://globals/game.gd"
 
 [display]
 

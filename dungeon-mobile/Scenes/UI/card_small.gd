@@ -14,7 +14,7 @@ var card
 func _ready() -> void:
 	background_texture.texture = load("res://assets/cards/%sSmall.png" %card.card_image)
 	border_texture.texture = load("res://assets/cards/%sSmall.png" %card.border_image)
-	move_label.text = str(int(card.move))
+	move_label.text = str(int(card.moves))
 	attack_label.text = str(int(card.attack))
 	name_label.text = card.name
 	description_edit.text = card.description

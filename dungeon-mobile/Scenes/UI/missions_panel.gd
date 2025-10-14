@@ -15,7 +15,7 @@ func _ready() -> void:
 	update_missions()
 
 func update_missions():
-	var missions = Data.data.next_missions
+	var missions = Config.missions[Game.get_previous_mission()].unlocks
 	
 	_mission_selected(missions[0])
 	
@@ -36,8 +36,6 @@ func _mission_selected(mission):
 	enemies_label.text = "Enemies: %s" %mission_data.enemies
 
 func _on_go_pressed() -> void:
-	Data.data.current_mission = selected_mission
-	
-	Data.save()
+	Game.set_current_mission(selected_mission)
 	
 	get_tree().change_scene_to_file("res://scenes/mission.tscn")

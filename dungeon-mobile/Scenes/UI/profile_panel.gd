@@ -18,28 +18,30 @@ func _ready():
 	update_weapon()
 
 func update_character():
-	var character = Config.characters[Data.data.character.type]
+	var character = Game.get_character()
+	var character_type = character.get_character_type()
+	var character_config = Config.characters[character_type]
 	
-	character_type_label.text = character.type
+	character_type_label.text = character_type
 	
-	portrait_texture.texture = load("res://assets/profiles/%s.png" %character.profile)
-	name_label.text = "Name: %s" %Data.data.character.name
-	level_label.text = "Level: %s" %str(int(Data.data.character.level))
-	gold_label.text = "Gold: %s" %str(int(Data.data.character.gold))
-	description_label.text = character.description
+	portrait_texture.texture = load("res://assets/profiles/%s.png" %character_config.profile)
+	name_label.text = "Name: %s" %character.get_name()
+	level_label.text = "Level: %s" %str(int(character.get_level()))
+	gold_label.text = "Gold: %s" %str(int(character.get_gold()))
+	description_label.text = character_config.description
 	
 	for child in character_cards_contrainer.get_children():
 		child.queue_free()
 	
-	var cards = character.levels["0"].cards
-	for card_name in cards:
+	for card_name in character.get_hand():
 		var new_card_small = CARD_SMALL.instantiate()
 		new_card_small.card = Config.cards[card_name]
 		new_card_small.card_pressed.connect(_card_pressed)
 		character_cards_contrainer.add_child(new_card_small)
 
 func update_weapon() -> void:
-	var weapon = Config.weapons[Data.data.character.weapon_type]
+	var character = Game.get_character()
+	var weapon = Config.weapons[character.get_weapon_type()]
 	
 	weapon_type_label.text = weapon.type
 	

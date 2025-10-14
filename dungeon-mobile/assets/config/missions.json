@@ -1,4 +1,9 @@
 {
+	"none": {
+		"unlocks": [
+			"test"
+		]
+	},
 	"start": {
 		"name": "Start",
 		"description": "The start mission.",

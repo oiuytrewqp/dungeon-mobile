@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ckxraealy15ia" path="res://assets/models/cell.gltf" id="1_8ewkh"]
 [ext_resource type="Script" uid="uid://cecmyhl36cdl" path="res://scenes/cells/door.gd" id="2_hro0l"]
-[ext_resource type="PackedScene" uid="uid://c8aee4xldxh1q" path="res://helpers/hex.tscn" id="3_onopk"]
+[ext_resource type="PackedScene" uid="uid://c8aee4xldxh1q" path="res://globals/hex.tscn" id="3_onopk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ewkh"]
 albedo_color = Color(0.211185, 0.1725, 0.0628788, 1)

@@ -217,7 +217,6 @@ location = Vector2i(-3, 3)
 
 [node name="Door5" parent="." index="60" instance=ExtResource("5_q7pyt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.865136, 0.15, -1.495512)
-visible = true
 location = Vector2i(1, -1)
 
 [node name="Light" parent="." index="62" instance=ExtResource("7_vv4mt")]
