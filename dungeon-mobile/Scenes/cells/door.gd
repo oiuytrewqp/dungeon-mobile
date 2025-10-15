@@ -29,8 +29,8 @@ func _process(delta):
 				_update()
 
 func _update():
-	var axial = hex.position_to_axial(position)
-	position = hex.axial_to_position(axial)
+	var axial = Hex.position_to_axial(position)
+	position = Hex.axial_to_position(axial)
 	position.y = 0.15
 	data.x = axial.x
 	data.y = axial.y

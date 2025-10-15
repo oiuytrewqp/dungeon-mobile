@@ -7,20 +7,21 @@ extends PanelContainer
 
 func _ready() -> void:
 	_update()
-	Data.playing_updated.connect(_update)
+	var current_mission = Game.get_current_mission()
+	current_mission.selected_card_updated.connect(_update)
 
 func _update():
-	var playing_card = Data.data.character.playing
-	visible = playing_card != null
-	if playing_card == null:
+	var selected_card_name = Game.get_current_mission().get_selected_card_name()
+	visible = selected_card_name != null
+	if selected_card_name == null:
 		return
 	
-	var card_data = Config.cards[Data.data.character.playing.card]
-	name_label.text = card_data.name
-	move_label.text = "Move: %s" %card_data.moves
-	attack_label.text = "Atack: %s" %card_data.attack
+	var selected_card_data = Config.cards[selected_card_name]
+	name_label.text = selected_card_data.name
+	move_label.text = "Move: %s" %selected_card_data.moves
+	attack_label.text = "Atack: %s" %selected_card_data.attack
 	
-	for action in card_data.actions:
+	for action in selected_card_data.actions:
 		var new_label = Label.new()
 		new_label.text = _format_action(action)
 		actions_container.add_child(new_label)

@@ -1,14 +1,13 @@
 extends Area3D
 
 signal selected(location)
-signal chosen(location)
 
 var location
 
 var is_selected = false
 
 func _ready() -> void:
-	position = Game.axial_to_position(location)
+	position = Hex.axial_to_position(Vector2i(location.x, location.y))
 
 func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventScreenTouch:
@@ -21,6 +20,6 @@ func _on_input_event(camera: Node, event: InputEvent, event_position: Vector3, n
 
 func _pressed():
 	if is_selected:
-		chosen.emit(location)
+		Game.get_current_mission().set_character_location(location)
 	else:
 		selected.emit(location)

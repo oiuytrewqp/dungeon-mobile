@@ -1,9 +1,5 @@
 extends Node
 
-signal on_character_spawns_updated(character_spawns)
-signal hand_updated()
-signal playing_updated()
-
 var _data
 
 func _ready() -> void:
@@ -61,39 +57,13 @@ func get_completed_missions():
 func get_current_mission():
 	return _data.current_mission
 
-#region Mission Data
-func has_current_mission():
-	return _data.current_mission == null
-
-func get_current_map_name():
-	return Config.missions[_data.current_mission].map
-
 func set_current_mission(new_current_mission):
 	_data.current_mission = MissionData.new()
-	_data.current_mission.setup(new_current_mission)
+	_data.current_mission.setup(new_current_mission, get_character().get_hand())
 	
 	save()
-#endregion
 
-#region Mission Functions
-func set_map_move_locations(new_locations : Dictionary[Vector2i, String]):
-	var move_locations = []
-	for location in new_locations:
-		move_locations.append({
-			"x": location.x,
-			"y": location.y
-		})
-	_data.current_mission.move_locations = move_locations
-	Pathfinding.create_graph(new_locations.keys())
-
-func set_map_enemies(new_enemies):
-	_data.current_mission.enemies = new_enemies
-#endregion
-
-func set_character_location(location):
-	_data.charater.location.x = location.x
-	_data.charater.location.y = location.y
-
+"""
 func get_character_position():
 	var location = Vector2(_data.charater.location.x, _data.charater.location.y)
 	return Hex.axial_to_position(location)
@@ -119,3 +89,4 @@ func play_card(card):
 	playing_updated.emit()
 	_data.character.hand.erase(card)
 	hand_updated.emit()
+"""

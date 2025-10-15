@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4eq8ikarid2h"]
+
+[ext_resource type="Script" uid="uid://c2737wiw7okt1" path="res://scenes/dolly.gd" id="1_r4qig"]
+
+[node name="Dolly" type="Node3D"]
+script = ExtResource("1_r4qig")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.343234, 0.93925, 0, -0.93925, 0.343234, 0, 10.133519, 4.730327)

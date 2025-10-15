@@ -1,6 +1,6 @@
 extends Node3D
 
-@onready var camera = $Camera3D
+@onready var dolly = $Dolly
 @onready var card_container = %CardsContainer
 
 var enemy_scenes = {}
@@ -9,26 +9,32 @@ var character_scene
 var moveables = []
 
 func _ready() -> void:
-	if Game.character_spawned():
+	var mission_data = Game.get_current_mission()
+	if mission_data.is_character_spawned():
 		_on_character_spawned()
 	else:
-		Game.on_character_spawned.connect(_on_character_spawned)
+		mission_data.character_spawned.connect(_on_character_spawned)
 	
-	add_child(load("res://scenes/missions/%s.tscn" %Game.get_current_map_name()).instantiate())
+	add_child(load("res://scenes/missions/%s.tscn" %Config.missions[mission_data.get_name()].map).instantiate())
+
+#Pathfinding.create_graph(new_locations.keys())
 
 func _on_character_spawned():
 	_spawn_character()
-	_reparent_camera()
+	_reparent_dolly()
 
 func _spawn_character():
-	var model = Config.characters[Game.get_character_type()].model
+	var character = Game.get_character()
+	var mission_data = Game.get_current_mission()
+	var model = Config.characters[character.get_character_type()].model
 	
 	character_scene = load("res://scenes/characters/chibi_%s.tscn" %model).instantiate()
-	character_scene.position = Game.get_character_position()
+	character_scene.position = Hex.axial_to_position(mission_data.get_character_location())
+	character_scene.rotation_degrees = Vector3(0, mission_data.get_character_rotation(), 0)
 	add_child(character_scene)
 
-func _reparent_camera():
-	camera.reparent(character_scene, false)
+func _reparent_dolly():
+	dolly.reparent(character_scene, false)
 
 func _on_card_played(card: Variant) -> void:
 	Game.play_card(card)
