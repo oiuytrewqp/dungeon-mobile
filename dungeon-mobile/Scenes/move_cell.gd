@@ -1,10 +1,6 @@
 extends Node3D
 
-signal selected(location)
-
 var location
-
-var is_selected = false
 
 func _ready() -> void:
 	position = Hex.axial_to_position(Vector2i(location.x, location.y))
@@ -19,7 +15,4 @@ func _on_input_event(_camera: Node, event: InputEvent, _event_position: Vector3,
 			_pressed()
 
 func _pressed():
-	if is_selected:
-		Game.get_current_mission().set_character_location(location, randf_range(0, 360))
-	else:
-		selected.emit(location)
+	Game.get_current_mission().move_character(location)

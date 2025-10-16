@@ -1,20 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://2xt2rs8wlwge"]
+[gd_scene load_steps=5 format=3 uid="uid://bct41kjsr6hjx"]
 
 [ext_resource type="PackedScene" uid="uid://bp2k4ea0hd7br" path="res://assets/models/tile.gltf" id="1_1v2od"]
 [ext_resource type="Script" uid="uid://dprb2km83cmmv" path="res://scenes/spawn_tile.gd" id="1_h2o6y"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4g2hf"]
-data = PackedVector3Array(0.4337, 0.0454, 0.2636, 0.0132, 0.0454, 0.5064, 0.0007, 0.0454, -0.0008, 0.0132, 0.0454, 0.5064, -0.0118, 0.0454, 0.5064, 0.0007, 0.0454, -0.0008, 0.4462, 0.0454, 0.242, 0.4337, 0.0454, 0.2636, 0.0007, 0.0454, -0.0008, 0.0007, 0.0454, -0.0008, -0.0118, 0.0454, 0.5064, -0.4323, 0.0454, 0.2636, 0.4462, 0.0454, -0.2436, 0.4462, 0.0454, 0.242, 0.0007, 0.0454, -0.0008, 0.0007, 0.0454, -0.0008, -0.4323, 0.0454, 0.2636, -0.4448, 0.0454, 0.242, 0.4462, 0.0454, -0.2436, 0.0007, 0.0454, -0.0008, 0.4337, 0.0454, -0.2652, 0.0007, 0.0454, -0.0008, -0.4448, 0.0454, 0.242, -0.4448, 0.0454, -0.2436, 0.0132, 0.0454, -0.508, 0.4337, 0.0454, -0.2652, 0.0007, 0.0454, -0.0008, 0.0007, 0.0454, -0.0008, -0.4448, 0.0454, -0.2436, -0.4323, 0.0454, -0.2652, 0.0132, 0.0454, -0.508, 0.0007, 0.0454, -0.0008, -0.0118, 0.0454, -0.508, 0.0007, 0.0454, -0.0008, -0.4323, 0.0454, -0.2652, -0.0118, 0.0454, -0.508)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2o6y"]
+albedo_color = Color(8.061901e-07, 0.41346616, 3.85046e-07, 1)
 
-[node name="SpawnTile" type="Area3D"]
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_o28hr"]
+data = PackedVector3Array(0.4337, 0.045399997, 0.2636, 0.0132, 0.045399997, 0.5064, 0.0007, 0.045399997, -0.0008, 0.0132, 0.045399997, 0.5064, -0.0117999995, 0.045399997, 0.5064, 0.0007, 0.045399997, -0.0008, 0.44619998, 0.045399997, 0.242, 0.4337, 0.045399997, 0.2636, 0.0007, 0.045399997, -0.0008, 0.0007, 0.045399997, -0.0008, -0.0117999995, 0.045399997, 0.5064, -0.4323, 0.045399997, 0.2636, 0.44619998, 0.045399997, -0.2436, 0.44619998, 0.045399997, 0.242, 0.0007, 0.045399997, -0.0008, 0.0007, 0.045399997, -0.0008, -0.4323, 0.045399997, 0.2636, -0.4448, 0.045399997, 0.242, 0.44619998, 0.045399997, -0.2436, 0.0007, 0.045399997, -0.0008, 0.4337, 0.045399997, -0.2652, 0.0007, 0.045399997, -0.0008, -0.4448, 0.045399997, 0.242, -0.4448, 0.045399997, -0.2436, 0.0132, 0.045399997, -0.508, 0.4337, 0.045399997, -0.2652, 0.0007, 0.045399997, -0.0008, 0.0007, 0.045399997, -0.0008, -0.4448, 0.045399997, -0.2436, -0.4323, 0.045399997, -0.2652, 0.0132, 0.045399997, -0.508, 0.0007, 0.045399997, -0.0008, -0.0117999995, 0.045399997, -0.508, 0.0007, 0.045399997, -0.0008, -0.4323, 0.045399997, -0.2652, -0.0117999995, 0.045399997, -0.508)
+
+[node name="SpawnTile" instance=ExtResource("1_1v2od")]
 script = ExtResource("1_h2o6y")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("ConcavePolygonShape3D_4g2hf")
+[node name="Tile" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_h2o6y")
 
-[node name="tile" parent="." instance=ExtResource("1_1v2od")]
+[node name="Area3D" type="Area3D" parent="." index="1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.001381172, 0, 0)
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_o28hr")
 
-[editable path="tile"]
+[connection signal="input_event" from="Area3D" to="." method="_on_input_event"]

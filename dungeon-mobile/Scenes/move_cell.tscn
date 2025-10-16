@@ -1,20 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1fqk03xsmwcp"]
+[gd_scene load_steps=5 format=3 uid="uid://bb2v8fevgfha6"]
 
-[ext_resource type="PackedScene" uid="uid://ckxraealy15ia" path="res://assets/models/cell.gltf" id="1_jfuc4"]
-[ext_resource type="Script" uid="uid://b48ts2a2tpmr7" path="res://scenes/moveable.gd" id="1_vir2f"]
+[ext_resource type="PackedScene" uid="uid://ckxraealy15ia" path="res://assets/models/cell.gltf" id="1_4kf8o"]
+[ext_resource type="Script" uid="uid://b48ts2a2tpmr7" path="res://scenes/move_cell.gd" id="2_tuquh"]
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vir2f"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tuquh"]
+albedo_color = Color(2.2140146e-06, 0, 0.6662291, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tuquh"]
 data = PackedVector3Array(0.4337, 0.045399997, 0.2636, 0.0132, 0.045399997, 0.5064, 0.0007, 0.045399997, -0.0008, 0.0132, 0.045399997, 0.5064, -0.0117999995, 0.045399997, 0.5064, 0.0007, 0.045399997, -0.0008, 0.44619998, 0.045399997, 0.242, 0.4337, 0.045399997, 0.2636, 0.0007, 0.045399997, -0.0008, 0.0007, 0.045399997, -0.0008, -0.0117999995, 0.045399997, 0.5064, -0.4323, 0.045399997, 0.2636, 0.44619998, 0.045399997, -0.2436, 0.44619998, 0.045399997, 0.242, 0.0007, 0.045399997, -0.0008, 0.0007, 0.045399997, -0.0008, -0.4323, 0.045399997, 0.2636, -0.4448, 0.045399997, 0.242, 0.44619998, 0.045399997, -0.2436, 0.0007, 0.045399997, -0.0008, 0.4337, 0.045399997, -0.2652, 0.0007, 0.045399997, -0.0008, -0.4448, 0.045399997, 0.242, -0.4448, 0.045399997, -0.2436, 0.0132, 0.045399997, -0.508, 0.4337, 0.045399997, -0.2652, 0.0007, 0.045399997, -0.0008, 0.0007, 0.045399997, -0.0008, -0.4448, 0.045399997, -0.2436, -0.4323, 0.045399997, -0.2652, 0.0132, 0.045399997, -0.508, 0.0007, 0.045399997, -0.0008, -0.0117999995, 0.045399997, -0.508, 0.0007, 0.045399997, -0.0008, -0.4323, 0.045399997, -0.2652, -0.0117999995, 0.045399997, -0.508)
 
-[node name="Moveable" type="Area3D"]
-script = ExtResource("1_vir2f")
+[node name="MoveCell" instance=ExtResource("1_4kf8o")]
+script = ExtResource("2_tuquh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("ConcavePolygonShape3D_vir2f")
+[node name="Cell" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_tuquh")
 
-[node name="cell" parent="." instance=ExtResource("1_jfuc4")]
+[node name="Area3D" type="Area3D" parent="." index="1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.001381172, 0, 0)
 
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_tuquh")
 
-[editable path="cell"]
+[connection signal="input_event" from="Area3D" to="." method="_on_input_event"]

@@ -4,12 +4,14 @@ signal spawn_locations_updated()
 signal enemies_updated()
 signal character_spawned()
 signal selected_card_updated()
+signal character_path_updated()
+signal moves_available_updated()
 signal hand_updated()
 
 var _name
-var _move_locations
-var _spawn_locations
-var _door_locations
+var _move_locations : Array[Vector2i]
+var _spawn_locations : Array[Vector2i]
+var _door_locations : Array[Vector2i]
 var _enemies
 var _character_location
 var _character_rotation
@@ -18,6 +20,8 @@ var _discard
 var _selected_card_name
 var _moves_available
 var _actions_available
+
+var _character_path
 
 func setup(name, hand):
 	_name = name
@@ -41,12 +45,24 @@ func save():
 
 func load(data):
 	_name = data.name
-	_move_locations = data.move_locations
-	_spawn_locations = data.spawn_locations
-	_door_locations = data.door_locations
-	_enemies = data.enemies
-	_character_location = data.character_location
-	_character_rotation = data.character_rotation
+	if data.move_locations != null:
+		var move_locations = []
+		for location in data.move_locations:
+			move_locations.append(Vector2i(location.x, location.y))
+		_move_locations = move_locations
+	if data.spawn_locations != null:
+		var spawn_locations = []
+		for location in data.spawn_locations:
+			spawn_locations.append(Vector2i(location.x, location.y))
+		_spawn_locations = spawn_locations
+	if data.door_locations != null:
+		var door_locations = []
+		for location in data.door_locations:
+			door_locations.append(Vector2i(location.x, location.y))
+		_door_locations = door_locations
+	_enemies = data.enemies #TODO: convert to Vector2 safely
+	_character_location = data.character_location #TODO: convert to Vector2 safely
+	_character_rotation = data.character_rotation #TODO: convert to Vector2 safely
 	_hand = data.hand
 	_discard = data.discard
 	_selected_card_name = data.selected_card_name
@@ -63,20 +79,32 @@ func set_move_locations(new_move_locations):
 
 func set_door_locations(new_door_locations):
 	_door_locations = new_door_locations
+	_update_doors()
 
 func set_enemies(new_enemies):
 	_enemies = new_enemies
+	_update_obstacles()
 	enemies_updated.emit()
 
-func set_character_location(new_location):
+func set_character_location(new_location, new_rotation):
+	var spawned = _character_location == null
 	_character_location = new_location
-	_character_rotation = randf_range(0, 360)
-	character_spawned.emit()
+	_character_rotation = new_rotation
+	if spawned:
+		character_spawned.emit()
 
 func set_selected_card_name(new_card_name):
 	_selected_card_name = new_card_name
 	_moves_available = Config.cards[_selected_card_name].moves
 	selected_card_updated.emit()
+
+func move_character(location):
+	_character_path = Pathfinding.find_path(_character_location, location)
+	character_path_updated.emit()
+
+func set_moves_available(new_moves_available):
+	_moves_available = new_moves_available
+	moves_available_updated.emit()
 
 func get_name():
 	return _name
@@ -107,3 +135,26 @@ func get_character_rotation():
 
 func get_moves_available():
 	return _moves_available
+
+func get_character_path():
+	return _character_path
+
+func is_busy():
+	if _character_path != null:
+		return true
+	
+	return false
+
+func _update_obstacles():
+	var obstacles = []
+	if _enemies != null:
+		for location in _enemies:
+			obstacles.append(Vector2i(location.x, location.y))
+	Pathfinding.update_obstacles(obstacles)
+
+func _update_doors():
+	var doors = []
+	if _door_locations != null:
+		for location in _door_locations:
+			doors.append(location)
+	Pathfinding.update_doors(doors)

@@ -2,18 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://ckxraealy15ia" path="res://assets/models/cell.gltf" id="1_xk31o"]
 [ext_resource type="Script" uid="uid://b5a5c68awhjim" path="res://scenes/cells/spawn.gd" id="2_uxe8c"]
-[ext_resource type="PackedScene" uid="uid://c8aee4xldxh1q" path="res://globals/hex.tscn" id="3_8wcoi"]
+[ext_resource type="PackedScene" uid="uid://b8dewxqieewop" path="res://globals/hex.tscn" id="3_8wcoi"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxe8c"]
-albedo_color = Color(0, 1, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8wcoi"]
+albedo_color = Color(0, 0.40455496, 5.7756904e-07, 1)
 
 [node name="Spawn" instance=ExtResource("1_xk31o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, 0)
 visible = false
 script = ExtResource("2_uxe8c")
 editor = false
 
 [node name="Cell" parent="." index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_uxe8c")
+surface_material_override/0 = SubResource("StandardMaterial3D_8wcoi")
 
 [node name="Hex" parent="." index="1" instance=ExtResource("3_8wcoi")]

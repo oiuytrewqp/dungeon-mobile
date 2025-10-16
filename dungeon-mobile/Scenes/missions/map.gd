@@ -1,9 +1,9 @@
 extends Node3D
 
 func _ready() -> void:
-	var spawn_locations = []
-	var move_locations = []
-	var door_locations = []
+	var spawn_locations : Array[Vector2i] = []
+	var move_locations : Array[Vector2i] = []
+	var door_locations : Array[Vector2i] = []
 	var enemies = []
 	
 	for child in get_children():
