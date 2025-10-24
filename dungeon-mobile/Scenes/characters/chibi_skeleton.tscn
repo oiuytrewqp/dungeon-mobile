@@ -1,11 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://01b3rattewnh"]
+[gd_scene load_steps=5 format=3 uid="uid://01b3rattewnh"]
 
 [ext_resource type="PackedScene" uid="uid://bx1libqovay7h" path="res://assets/models/characters/ChibiSkeleton.gltf" id="1_01pf5"]
 [ext_resource type="Script" uid="uid://36d24w1wt3k7" path="res://scenes/characters/chibi_skeleton.gd" id="2_76lus"]
 [ext_resource type="PackedScene" uid="uid://cfdn1kxlloply" path="res://scenes/items/sword.tscn" id="2_xjymk"]
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_76lus"]
+viewport_path = NodePath("SubViewport")
+
 [node name="ChibiSkeleton" instance=ExtResource("1_01pf5")]
 script = ExtResource("2_76lus")
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_76lus")
 
 [node name="Skeleton3D" parent="rig" index="0"]
 bones/27/rotation = Quaternion(0.0943607, -1.58778e-08, 8.14639e-09, 0.995538)
@@ -27,12 +35,43 @@ bones/172/rotation = Quaternion(0.127173, -1.37462e-06, -1.35684e-06, 0.991881)
 bones/174/rotation = Quaternion(-0.0819006, 0.0108805, 0.131231, 0.987903)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.300559, -0.947247, -0.111301, 0.755754, -0.30772, 0.578053, -0.581809, 0.0896225, 0.808373, -0.462824, 1.08422, -0.0760775)
+transform = Transform3D(-0.3005588, -0.94724745, -0.11130134, 0.7557535, -0.30771956, 0.5780532, -0.5818087, 0.0896225, 0.8083728, -0.462824, 1.0842197, -0.076077536)
 bone_name = "DEF-hand.R"
 bone_idx = 174
 
 [node name="Sword" parent="rig/Skeleton3D/BoneAttachment3D" index="0" instance=ExtResource("2_xjymk")]
 transform = Transform3D(0.0559787, -0.00617953, 0.998412, 0.904867, 0.422964, -0.0481158, -0.421996, 0.906125, 0.0292687, -0.0117167, 0.0445668, -0.000240833)
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="2"]
 autoplay = "IdleSword"
+
+[node name="SubViewport" type="SubViewport" parent="." index="3"]
+size = Vector2i(100, 50)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport" index="0"]
+offset_right = 100.0
+offset_bottom = 50.0
+
+[node name="PanelContainer" type="PanelContainer" parent="SubViewport/VBoxContainer" index="0"]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="SubViewport/VBoxContainer/PanelContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="SubViewport/VBoxContainer/PanelContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "10 / 10"
+horizontal_alignment = 1
+
+[node name="PanelContainer2" type="PanelContainer" parent="SubViewport/VBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="SubViewport/VBoxContainer/PanelContainer2" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Skeleton"
+horizontal_alignment = 1

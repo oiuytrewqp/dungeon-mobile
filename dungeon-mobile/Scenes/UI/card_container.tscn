@@ -22,10 +22,6 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AttackButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Attack"
-
 [node name="ActionButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Action"
@@ -34,5 +30,4 @@ text = "Action"
 unique_name_in_owner = true
 layout_mode = 2
 
-[connection signal="pressed" from="VBoxContainer/AttackButton" to="." method="_choose_attack"]
 [connection signal="pressed" from="VBoxContainer/ActionButton" to="." method="_choose_action"]

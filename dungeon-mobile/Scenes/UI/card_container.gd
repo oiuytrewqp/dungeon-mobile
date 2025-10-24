@@ -42,8 +42,5 @@ func _format_action(action):
 		"invisible":
 			return "Invisible"
 
-func _choose_attack() -> void:
-	pass # Replace with function body.
-
 func _choose_action() -> void:
 	pass # Replace with function body.

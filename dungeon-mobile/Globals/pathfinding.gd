@@ -140,3 +140,10 @@ func find_locations(start: Vector2i, max_distance: int) -> Dictionary:
 					queue.append({"pos": neighbor, "distance": current_distance + 1})
 	
 	return result
+
+func neighbours(location: Vector2i) -> Array:
+	var all_neighbours = []
+	for neighbor in _graph.get(location, []):
+		all_neighbours.append(neighbor)
+	
+	return all_neighbours

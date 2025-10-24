@@ -30,7 +30,6 @@ func _spawn_character():
 	
 	character_scene = load("res://scenes/characters/chibi_%s.tscn" %model).instantiate()
 	character_scene.position = Hex.axial_to_position(mission_data.get_character_location())
-	character_scene.rotation_degrees = Vector3(0, mission_data.get_character_rotation(), 0)
 	add_child(character_scene)
 
 func _reparent_dolly():
@@ -49,7 +48,8 @@ func _character_path_updated():
 	mission_data.set_moves_available(mission_data.get_moves_available() - path.size())
 
 func _moved():
-	print("moved")
+	var mission_data = Game.get_current_mission()
+	mission_data.character_moved()
 
 """
 func _on_card_played(card: Variant) -> void:

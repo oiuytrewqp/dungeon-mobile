@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cds8ow36uimxg"]
+
+[ext_resource type="PackedScene" uid="uid://ckxraealy15ia" path="res://assets/models/cell.gltf" id="1_lcm8o"]
+[ext_resource type="Script" uid="uid://du7jll2vpbstg" path="res://scenes/attack_cell.gd" id="2_lcm8o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lcm8o"]
+albedo_color = Color(0.6857328, 3.1044335e-06, 5.7756904e-07, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tuquh"]
+data = PackedVector3Array(0.4337, 0.045399997, 0.2636, 0.0132, 0.045399997, 0.5064, 0.0007, 0.045399997, -0.0008, 0.0132, 0.045399997, 0.5064, -0.0117999995, 0.045399997, 0.5064, 0.0007, 0.045399997, -0.0008, 0.44619998, 0.045399997, 0.242, 0.4337, 0.045399997, 0.2636, 0.0007, 0.045399997, -0.0008, 0.0007, 0.045399997, -0.0008, -0.0117999995, 0.045399997, 0.5064, -0.4323, 0.045399997, 0.2636, 0.44619998, 0.045399997, -0.2436, 0.44619998, 0.045399997, 0.242, 0.0007, 0.045399997, -0.0008, 0.0007, 0.045399997, -0.0008, -0.4323, 0.045399997, 0.2636, -0.4448, 0.045399997, 0.242, 0.44619998, 0.045399997, -0.2436, 0.0007, 0.045399997, -0.0008, 0.4337, 0.045399997, -0.2652, 0.0007, 0.045399997, -0.0008, -0.4448, 0.045399997, 0.242, -0.4448, 0.045399997, -0.2436, 0.0132, 0.045399997, -0.508, 0.4337, 0.045399997, -0.2652, 0.0007, 0.045399997, -0.0008, 0.0007, 0.045399997, -0.0008, -0.4448, 0.045399997, -0.2436, -0.4323, 0.045399997, -0.2652, 0.0132, 0.045399997, -0.508, 0.0007, 0.045399997, -0.0008, -0.0117999995, 0.045399997, -0.508, 0.0007, 0.045399997, -0.0008, -0.4323, 0.045399997, -0.2652, -0.0117999995, 0.045399997, -0.508)
+
+[node name="AttackCell" instance=ExtResource("1_lcm8o")]
+script = ExtResource("2_lcm8o")
+
+[node name="Cell" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_lcm8o")
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.001381172, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_tuquh")
+
+[connection signal="input_event" from="Area3D" to="." method="_on_input_event"]

@@ -6,12 +6,14 @@ signal character_spawned()
 signal selected_card_updated()
 signal character_path_updated()
 signal moves_available_updated()
+signal character_location_updated()
 signal hand_updated()
 
 var _name
 var _move_locations : Array[Vector2i]
 var _spawn_locations : Array[Vector2i]
 var _door_locations : Array[Vector2i]
+var _character
 var _enemies
 var _character_location
 var _character_rotation
@@ -33,9 +35,8 @@ func save():
 		"move_locations": _move_locations,
 		"spawn_locations": _spawn_locations,
 		"door_locations": _door_locations,
+		"character": _character,
 		"enemies": _enemies,
-		"character_location": _character_location,
-		"character_rotation": _character_rotation,
 		"hand": _hand,
 		"discard": _discard,
 		"selected_card_name": _selected_card_name,
@@ -60,9 +61,8 @@ func load(data):
 		for location in data.door_locations:
 			door_locations.append(Vector2i(location.x, location.y))
 		_door_locations = door_locations
-	_enemies = data.enemies #TODO: convert to Vector2 safely
-	_character_location = data.character_location #TODO: convert to Vector2 safely
-	_character_rotation = data.character_rotation #TODO: convert to Vector2 safely
+	_character = data.character
+	_enemies = data.enemies
 	_hand = data.hand
 	_discard = data.discard
 	_selected_card_name = data.selected_card_name
@@ -102,9 +102,22 @@ func move_character(location):
 	_character_path = Pathfinding.find_path(_character_location, location)
 	character_path_updated.emit()
 
+func character_moved():
+	character_location_updated.emit()
+
 func set_moves_available(new_moves_available):
 	_moves_available = new_moves_available
 	moves_available_updated.emit()
+
+func enemy_at_location(location):
+	for enemy in _enemies:
+		if enemy.x == location.x && enemy.y == location.y:
+			return true
+	
+	return false
+
+func attack(location):
+	print(location)
 
 func get_name():
 	return _name

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d1wmrps5wjlii"]
+[gd_scene load_steps=15 format=3 uid="uid://d1wmrps5wjlii"]
 
 [ext_resource type="Script" uid="uid://bjb5y6ox2tvjv" path="res://scenes/mission.gd" id="1_7uqar"]
 [ext_resource type="PackedScene" uid="uid://bg1hs6scq7c0k" path="res://scenes/ui/cards_container.tscn" id="1_ebmjs"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b0y8ijvftf20q" path="res://scenes/controllers/enemies_controller.tscn" id="3_7uqar"]
 [ext_resource type="PackedScene" uid="uid://r33hq8wbntwm" path="res://scenes/controllers/move_controller.tscn" id="3_j45l6"]
 [ext_resource type="PackedScene" uid="uid://2qan1tuvbhxi" path="res://scenes/ui/items_panel.tscn" id="3_v158k"]
+[ext_resource type="PackedScene" uid="uid://fxeae4njladi" path="res://scenes/controllers/attack_controller.tscn" id="4_0nfvk"]
 [ext_resource type="PackedScene" uid="uid://b4eq8ikarid2h" path="res://scenes/dolly.tscn" id="4_j45l6"]
 [ext_resource type="PackedScene" uid="uid://cf3j3dwcot6s7" path="res://scenes/ui/confirmation_dialog.tscn" id="5_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dxyugguu6q4oe" path="res://scenes/ui/card_container.tscn" id="7_1l0tm"]
@@ -34,7 +35,7 @@ environment = SubResource("Environment_o5yvi")
 
 [node name="MoveController" parent="." instance=ExtResource("3_j45l6")]
 
-[node name="ObstaclesMap" type="Node3D" parent="."]
+[node name="AttackController" parent="." instance=ExtResource("4_0nfvk")]
 
 [node name="ItemsMap" type="Node3D" parent="."]
 
