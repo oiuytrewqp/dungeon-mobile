@@ -3,6 +3,7 @@ extends Node3D
 func _ready() -> void:
 	var mission_data = Game.get_current_mission()
 	mission_data.selected_card_updated.connect(_show_move_locations)
+	mission_data.moves_available_updated.connect(_show_move_locations)
 
 func _clear():
 	for child in get_children():

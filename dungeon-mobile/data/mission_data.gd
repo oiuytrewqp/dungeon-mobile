@@ -7,16 +7,19 @@ signal selected_card_updated()
 signal character_path_updated()
 signal moves_available_updated()
 signal character_location_updated()
+
+signal character_attack(enemy, attack)
+
 signal hand_updated()
 
 var _name
 var _move_locations : Array[Vector2i]
 var _spawn_locations : Array[Vector2i]
 var _door_locations : Array[Vector2i]
-var _character
 var _enemies
 var _character_location
 var _character_rotation
+var _character_health
 var _hand
 var _discard
 var _selected_card_name
@@ -24,10 +27,14 @@ var _moves_available
 var _actions_available
 
 var _character_path
+var _character_moving = false
+var _character_attacking = false
 
 func setup(name, hand):
 	_name = name
 	_hand = hand
+	_character_rotation = randf() * 360
+	_character_health = get_character_health_maximum()
 
 func save():
 	return {
@@ -35,7 +42,6 @@ func save():
 		"move_locations": _move_locations,
 		"spawn_locations": _spawn_locations,
 		"door_locations": _door_locations,
-		"character": _character,
 		"enemies": _enemies,
 		"hand": _hand,
 		"discard": _discard,
@@ -47,21 +53,20 @@ func save():
 func load(data):
 	_name = data.name
 	if data.move_locations != null:
-		var move_locations = []
+		var move_locations : Array[Vector2i] = []
 		for location in data.move_locations:
 			move_locations.append(Vector2i(location.x, location.y))
 		_move_locations = move_locations
 	if data.spawn_locations != null:
-		var spawn_locations = []
+		var spawn_locations : Array[Vector2i] = []
 		for location in data.spawn_locations:
 			spawn_locations.append(Vector2i(location.x, location.y))
 		_spawn_locations = spawn_locations
 	if data.door_locations != null:
-		var door_locations = []
+		var door_locations : Array[Vector2i] = []
 		for location in data.door_locations:
 			door_locations.append(Vector2i(location.x, location.y))
 		_door_locations = door_locations
-	_character = data.character
 	_enemies = data.enemies
 	_hand = data.hand
 	_discard = data.discard
@@ -82,7 +87,22 @@ func set_door_locations(new_door_locations):
 	_update_doors()
 
 func set_enemies(new_enemies):
-	_enemies = new_enemies
+	_enemies = []
+	for enemy in new_enemies:
+		var health_maximum = get_enemy_health_maximum(enemy.type)
+		var new_enemy = {
+			"type": enemy.type,
+			"x": enemy.x,
+			"y": enemy.y,
+			"health_maximum": health_maximum,
+			"health": health_maximum,
+			"attack": get_enemy_attack(enemy.type),
+			"defence": get_enemy_defence(enemy.type),
+			"range": get_enemy_range(enemy.type),
+			"move": get_enemy_move(enemy.type),
+			"rotation": randf() * 360
+		}
+		_enemies.append(new_enemy)
 	_update_obstacles()
 	enemies_updated.emit()
 
@@ -99,10 +119,15 @@ func set_selected_card_name(new_card_name):
 	selected_card_updated.emit()
 
 func move_character(location):
+	if _character_moving:
+		return
+	
+	_character_moving = true
 	_character_path = Pathfinding.find_path(_character_location, location)
 	character_path_updated.emit()
 
 func character_moved():
+	_character_moving = false
 	character_location_updated.emit()
 
 func set_moves_available(new_moves_available):
@@ -117,7 +142,12 @@ func enemy_at_location(location):
 	return false
 
 func attack(location):
-	print(location)
+	if _character_attacking:
+		return
+	
+	_character_attacking = true
+	set_moves_available(0)
+	character_attack.emit(location, Config.cards[_selected_card_name].attack)
 
 func get_name():
 	return _name
@@ -151,6 +181,45 @@ func get_moves_available():
 
 func get_character_path():
 	return _character_path
+
+func get_character_health():
+	return _character_health
+
+func get_character_health_maximum():
+	var character_data = Game.get_character()
+	var level = character_data.get_level()
+	var health_config = Config.characters[character_data.get_character_type()].health
+	return int(health_config.base + level * health_config.level)
+
+func get_enemy_health_maximum(enemy_type):
+	var character_data = Game.get_character()
+	var level = character_data.get_level()
+	var health_config = Config.enemies[enemy_type].health
+	return int(health_config.base + level * health_config.level)
+
+func get_enemy_attack(enemy_type):
+	var character_data = Game.get_character()
+	var level = character_data.get_level()
+	var attack_config = Config.enemies[enemy_type].attack
+	return int(attack_config.base + level * attack_config.level)
+
+func get_enemy_defence(enemy_type):
+	var character_data = Game.get_character()
+	var level = character_data.get_level()
+	var defence_config = Config.enemies[enemy_type].defence
+	return int(defence_config.base + level * defence_config.level)
+
+func get_enemy_range(enemy_type):
+	var character_data = Game.get_character()
+	var level = character_data.get_level()
+	var range_config = Config.enemies[enemy_type].range
+	return int(range_config.base + level * range_config.level)
+
+func get_enemy_move(enemy_type):
+	var character_data = Game.get_character()
+	var level = character_data.get_level()
+	var move_config = Config.enemies[enemy_type].move
+	return int(move_config.base + level * move_config.level)
 
 func is_busy():
 	if _character_path != null:

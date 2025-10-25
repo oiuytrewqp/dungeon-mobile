@@ -17,6 +17,10 @@
 			"base": 1,
 			"level": 0.25
 		},
+		"move": {
+			"base": 3,
+			"level": 1
+		},
 		"abilities": [],
 		"cards": []
 	}

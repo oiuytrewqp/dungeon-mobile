@@ -9,7 +9,11 @@ func _ready() -> void:
 	_update_all()
 	var current_mission = Game.get_current_mission()
 	current_mission.selected_card_updated.connect(_update_all)
+	current_mission.character_attack.connect(_hide)
 	current_mission.moves_available_updated.connect(_update_moves_available)
+
+func _hide():
+	visible = false
 
 func _update_all():
 	var mission_data = Game.get_current_mission()
