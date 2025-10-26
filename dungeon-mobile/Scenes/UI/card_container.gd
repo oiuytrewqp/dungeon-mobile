@@ -9,7 +9,7 @@ func _ready() -> void:
 	_update_all()
 	var current_mission = Game.get_current_mission()
 	current_mission.selected_card_updated.connect(_update_all)
-	current_mission.character_attack.connect(_hide)
+	current_mission.character_attack.connect(_character_attack)
 	current_mission.moves_available_updated.connect(_update_moves_available)
 
 func _hide():
@@ -48,3 +48,6 @@ func _format_action(action):
 
 func _choose_action() -> void:
 	pass # Replace with function body.
+
+func _character_attack(_enemy, _attack):
+	_hide()

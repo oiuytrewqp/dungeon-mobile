@@ -4,6 +4,7 @@ func _ready() -> void:
 	var mission_data = Game.get_current_mission()
 	mission_data.selected_card_updated.connect(_show_attack_locations)
 	mission_data.character_location_updated.connect(_show_attack_locations)
+	mission_data.character_attack.connect(_character_attack)
 
 func _clear():
 	for child in get_children():
@@ -26,3 +27,6 @@ func _show_attack_locations():
 		var new_attack = load("res://scenes/attack_cell.tscn").instantiate()
 		new_attack.location = attack_location
 		add_child(new_attack)
+
+func _character_attack(_enemy, _attack):
+	_clear()

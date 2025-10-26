@@ -9,6 +9,10 @@ signal moves_available_updated()
 signal character_location_updated()
 
 signal character_attack(enemy, attack)
+signal character_attack_done()
+
+signal character_health_update()
+signal charcter_hurt()
 
 signal hand_updated()
 
@@ -19,6 +23,7 @@ var _door_locations : Array[Vector2i]
 var _enemies
 var _character_location
 var _character_rotation
+var _character_health_maximum
 var _character_health
 var _hand
 var _discard
@@ -34,7 +39,8 @@ func setup(name, hand):
 	_name = name
 	_hand = hand
 	_character_rotation = randf() * 360
-	_character_health = get_character_health_maximum()
+	_character_health_maximum = get_character_health_maximum()
+	_character_health = _character_health_maximum
 
 func save():
 	return {
@@ -43,6 +49,11 @@ func save():
 		"spawn_locations": _spawn_locations,
 		"door_locations": _door_locations,
 		"enemies": _enemies,
+		"health_maximum": 10,
+		"character_location": _character_location,
+		"character_rotation": _character_rotation,
+		"character_health_maximum": _character_health_maximum,
+		"character_health": _character_health,
 		"hand": _hand,
 		"discard": _discard,
 		"selected_card_name": _selected_card_name,
@@ -68,6 +79,10 @@ func load(data):
 			door_locations.append(Vector2i(location.x, location.y))
 		_door_locations = door_locations
 	_enemies = data.enemies
+	_character_location = data.character_location
+	_character_rotation = data.character_rotation
+	_character_health_maximum = data.character_health_maximum
+	_character_health = data.character_health
 	_hand = data.hand
 	_discard = data.discard
 	_selected_card_name = data.selected_card_name
@@ -99,7 +114,7 @@ func set_enemies(new_enemies):
 			"attack": get_enemy_attack(enemy.type),
 			"defence": get_enemy_defence(enemy.type),
 			"range": get_enemy_range(enemy.type),
-			"move": get_enemy_move(enemy.type),
+			"moves": get_enemy_move(enemy.type),
 			"rotation": randf() * 360
 		}
 		_enemies.append(new_enemy)
@@ -149,6 +164,12 @@ func attack(location):
 	set_moves_available(0)
 	character_attack.emit(location, Config.cards[_selected_card_name].attack)
 
+func attack_done():
+	character_attack_done.emit()
+
+func enemies_done():
+	print("players turn again")
+
 func get_name():
 	return _name
 
@@ -184,6 +205,20 @@ func get_character_path():
 
 func get_character_health():
 	return _character_health
+
+func set_character_health(new_health):
+	if new_health < 0:
+		new_health = 0
+	
+	var hurt = false
+	if new_health < _character_health:
+		hurt = true
+	
+	_character_health = new_health
+	character_health_update.emit()
+	
+	if hurt:
+		charcter_hurt.emit()
 
 func get_character_health_maximum():
 	var character_data = Game.get_character()

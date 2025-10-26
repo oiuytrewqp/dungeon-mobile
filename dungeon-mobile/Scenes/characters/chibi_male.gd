@@ -20,6 +20,9 @@ func _ready() -> void:
 		name_label.text = character_data.get_name()
 		mission_data.character_path_updated.connect(_character_path_updated)
 		mission_data.character_attack.connect(_attack)
+		mission_data.character_health_update.connect(_update)
+		mission_data.charcter_hurt.connect(_hurt)
+		
 	else:
 		pass
 	
@@ -73,3 +76,26 @@ func _attack(location, attack):
 	rotation_degrees.y = angle
 	
 	aniamtion_player.play("StabSwordShield")
+	
+	var tween = get_tree().create_tween()
+	tween.tween_interval(2)
+	tween.tween_callback(_attack_done)
+
+func _attack_done():
+	var mission_data = Game.get_current_mission()
+	mission_data.attack_done()
+
+func _hurt():
+	var mission_data = Game.get_current_mission()
+	var new_health = mission_data.get_character_health()
+	if new_health == 0:
+		aniamtion_player.play("DieSwordShield")
+	else:
+		aniamtion_player.play("HurtSwordShield")
+	
+	var tween = get_tree().create_tween()
+	tween.tween_interval(2)
+	tween.tween_callback(_idle)
+
+func _idle():
+	aniamtion_player.play("IdleSwordShield")
