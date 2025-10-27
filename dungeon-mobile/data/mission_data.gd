@@ -15,6 +15,7 @@ signal character_health_update()
 signal charcter_hurt()
 
 signal hand_updated()
+signal discard_updated()
 
 var _name
 var _move_locations : Array[Vector2i]
@@ -34,10 +35,12 @@ var _actions_available
 var _character_path
 var _character_moving = false
 var _character_attacking = false
+var _enemy_turn = false
 
 func setup(name, hand):
 	_name = name
 	_hand = hand
+	_discard = []
 	_character_rotation = randf() * 360
 	_character_health_maximum = get_character_health_maximum()
 	_character_health = _character_health_maximum
@@ -129,12 +132,19 @@ func set_character_location(new_location, new_rotation):
 		character_spawned.emit()
 
 func set_selected_card_name(new_card_name):
+	if _selected_card_name != null || _enemy_turn:
+		return
+	
 	_selected_card_name = new_card_name
+	_discard.append(new_card_name)
+	_hand.erase(new_card_name)
 	_moves_available = Config.cards[_selected_card_name].moves
 	selected_card_updated.emit()
+	hand_updated.emit()
+	discard_updated.emit()
 
 func move_character(location):
-	if _character_moving:
+	if _character_moving || _enemy_turn:
 		return
 	
 	_character_moving = true
@@ -157,7 +167,7 @@ func enemy_at_location(location):
 	return false
 
 func attack(location):
-	if _character_attacking:
+	if _character_attacking || _enemy_turn:
 		return
 	
 	_character_attacking = true
@@ -165,10 +175,14 @@ func attack(location):
 	character_attack.emit(location, Config.cards[_selected_card_name].attack)
 
 func attack_done():
+	_selected_card_name = null
+	_character_attacking = false
+	_enemy_turn = true
 	character_attack_done.emit()
 
 func enemies_done():
-	print("players turn again")
+	_update_obstacles()
+	_enemy_turn = false
 
 func get_name():
 	return _name
@@ -184,6 +198,9 @@ func get_enemies():
 
 func get_hand():
 	return _hand
+
+func has_discards():
+	return _discard.size() > 0
 
 func get_selected_card_name():
 	return _selected_card_name
@@ -265,8 +282,9 @@ func is_busy():
 func _update_obstacles():
 	var obstacles = []
 	if _enemies != null:
-		for location in _enemies:
-			obstacles.append(Vector2i(location.x, location.y))
+		for enemy in _enemies:
+			if enemy.health > 0:
+				obstacles.append(Vector2i(enemy.x, enemy.y))
 	Pathfinding.update_obstacles(obstacles)
 
 func _update_doors():

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cfdn1kxlloply" path="res://scenes/items/sword.tscn" id="2_xjymk"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_76lus"]
+viewport_path = NodePath("SubViewport")
 
 [node name="ChibiSkeleton" instance=ExtResource("1_01pf5")]
 script = ExtResource("2_76lus")

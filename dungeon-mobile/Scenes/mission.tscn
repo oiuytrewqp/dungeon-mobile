@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1wmrps5wjlii"]
+[gd_scene load_steps=16 format=3 uid="uid://d1wmrps5wjlii"]
 
 [ext_resource type="Script" uid="uid://bjb5y6ox2tvjv" path="res://scenes/mission.gd" id="1_7uqar"]
 [ext_resource type="PackedScene" uid="uid://bg1hs6scq7c0k" path="res://scenes/ui/cards_container.tscn" id="1_ebmjs"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://b4eq8ikarid2h" path="res://scenes/dolly.tscn" id="4_j45l6"]
 [ext_resource type="PackedScene" uid="uid://cf3j3dwcot6s7" path="res://scenes/ui/confirmation_dialog.tscn" id="5_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://dxyugguu6q4oe" path="res://scenes/ui/card_container.tscn" id="7_1l0tm"]
+[ext_resource type="PackedScene" uid="uid://rk35dw8p7mjr" path="res://scenes/ui/discard_container.tscn" id="12_15bwj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h4fw4"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -63,3 +64,11 @@ anchor_bottom = 0.5
 offset_top = -20.0
 offset_bottom = 20.0
 grow_vertical = 2
+
+[node name="DiscardContainer" parent="CanvasLayer" instance=ExtResource("12_15bwj")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_bottom = 0.0
+grow_vertical = 0

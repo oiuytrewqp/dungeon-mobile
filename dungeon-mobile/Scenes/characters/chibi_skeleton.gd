@@ -9,11 +9,26 @@ signal done_performing_action()
 
 var enemy_data
 
+var _previous_global_position
+
 func _ready() -> void:
 	position = Hex.axial_to_position(Vector2(enemy_data.x, enemy_data.y))
 	rotation_degrees = Vector3(0, randf() * 360, 0)
 	name_label.text = Config.enemies[enemy_data.type].name
 	_update()
+	
+	_previous_global_position = Vector2(global_position.x, global_position.z)
+
+func _process(_delta: float) -> void:
+	var location2D = Vector2(global_position.x, global_position.z)
+	
+	if _previous_global_position.is_equal_approx(location2D):
+		return
+	
+	var angle = 90 - rad_to_deg((location2D - _previous_global_position).angle())
+	rotation_degrees.y = angle
+	
+	_previous_global_position = location2D
 
 func _update():
 	health_bar.max_value = enemy_data.health_maximum
@@ -71,6 +86,8 @@ func _moved(moves, location):
 	var neighbours = Hex.neighbors(location)
 	for neighbour in neighbours:
 		if neighbour.x == character_location.x && neighbour.y == character_location.y:
+			var character_position = Hex.axial_to_position(character_location)
+			_previous_global_position = Vector2(global_position.x + global_position.x - character_position.x, global_position.z + global_position.z - character_position.z)
 			aniamtion_player.play("StabSword")
 			var tween = get_tree().create_tween()
 			tween.tween_interval(2)

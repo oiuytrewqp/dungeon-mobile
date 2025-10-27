@@ -22,7 +22,7 @@ func _ready() -> void:
 		mission_data.character_attack.connect(_attack)
 		mission_data.character_health_update.connect(_update)
 		mission_data.charcter_hurt.connect(_hurt)
-		
+		_update()
 	else:
 		pass
 	
@@ -35,7 +35,6 @@ func _process(_delta: float) -> void:
 		return
 	
 	var angle = 90 - rad_to_deg((location2D - _previous_global_position).angle())
-	
 	rotation_degrees.y = angle
 	
 	_previous_global_position = location2D
@@ -45,7 +44,8 @@ func _update():
 	mission_data.get_character_rotation()
 	var health_maximum = mission_data.get_character_health_maximum()
 	var health = mission_data.get_character_health()
-	health_bar.value = health / health_maximum
+	health_bar.value = health
+	health_bar.max_value = health_maximum
 	health_label.text = "%s / %s" %[health, health_maximum]
 
 func _character_path_updated():
