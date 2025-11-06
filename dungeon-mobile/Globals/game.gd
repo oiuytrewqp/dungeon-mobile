@@ -1,5 +1,8 @@
 extends Node
 
+signal character_dead()
+signal mission_success()
+
 var _data
 
 func _ready() -> void:
@@ -63,30 +66,14 @@ func set_current_mission(new_current_mission):
 	
 	save()
 
-"""
-func get_character_position():
-	var location = Vector2(_data.charater.location.x, _data.charater.location.y)
-	return Hex.axial_to_position(location)
+func dead():
+	_data.current_mission = null
+	
+	character_dead.emit()
 
-func set_spawn_locations(new_locations):
-	var spawn_locations = []
-	for location in new_locations:
-		spawn_locations.append({
-			"x": location.x,
-			"y": location.y
-		})
-		on_character_spawns_updated.emit(spawn_locations)
-
-func get_spawn_locations():
-	return _data.current_mission.spawn_locations
-
-func play_card(card):
-	_data.character.playing = {
-		"card": card,
-		"moves": Config.cards[card].moves,
-		"action": 0
-	}
-	playing_updated.emit()
-	_data.character.hand.erase(card)
-	hand_updated.emit()
-"""
+func no_enemies():
+	_data.previous_mission = _data.current_mission
+	_data.completed_missions.append(_data.current_mission)
+	_data.current_mission = null
+	
+	mission_success.emit()

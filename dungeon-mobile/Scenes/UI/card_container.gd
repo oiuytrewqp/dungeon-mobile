@@ -51,3 +51,7 @@ func _choose_action() -> void:
 
 func _character_attack(_enemy, _attack):
 	_hide()
+
+func _on_skip_attack_pressed() -> void:
+	var mission_data = Game.get_current_mission()
+	mission_data.attack_done()

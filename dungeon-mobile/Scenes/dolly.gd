@@ -1,4 +1,7 @@
 extends Node3D
 
+var target
+
 func _process(_delta: float) -> void:
-	rotation.y = -get_parent().rotation.y
+	if target != null:
+		global_position = target.global_position

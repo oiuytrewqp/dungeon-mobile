@@ -63,6 +63,7 @@ func perform_action():
 	path.pop_back()
 	
 	if path.size() > 0:
+		print(name, " moves ", path.size())
 		var moves = []
 		for i in enemy_data.moves:
 			if path.size() > i:
@@ -75,9 +76,10 @@ func perform_action():
 		
 		aniamtion_player.play("WalkSword")
 	else:
-		done_performing_action.emit()
+		print(name, " doesnt move")
+		_moved(0, location)
 
-func _moved(moves, location):
+func _moved(_moves, location):
 	var mission_data = Game.get_current_mission()
 	enemy_data.x = location.x
 	enemy_data.y = location.y
@@ -92,6 +94,7 @@ func _moved(moves, location):
 			var tween = get_tree().create_tween()
 			tween.tween_interval(2)
 			tween.tween_callback(_attack_done)
+			print(name, " attacks")
 			return
 	
 	aniamtion_player.play("IdleSword")
@@ -99,5 +102,5 @@ func _moved(moves, location):
 
 func _attack_done():
 	var mission_data = Game.get_current_mission()
-	mission_data.set_character_health(mission_data.get_character_health() - 3)
+	mission_data.set_character_health(mission_data.get_character_health() - enemy_data.attack, Vector2(enemy_data.x, enemy_data.y))
 	done_performing_action.emit()

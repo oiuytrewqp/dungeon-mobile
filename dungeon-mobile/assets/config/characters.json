@@ -9,7 +9,7 @@
 		"consumables": [],
 		"items": [],
 		"health": {
-			"base": 10,
+			"base": 100,
 			"level": 1
 		},
 		"levels": {

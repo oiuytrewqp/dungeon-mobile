@@ -12,7 +12,7 @@ signal character_attack(enemy, attack)
 signal character_attack_done()
 
 signal character_health_update()
-signal charcter_hurt()
+signal charcter_hurt(enemy_location)
 
 signal hand_updated()
 signal discard_updated()
@@ -177,11 +177,19 @@ func attack(location):
 func attack_done():
 	_selected_card_name = null
 	_character_attacking = false
+	set_moves_available(0)
 	_enemy_turn = true
 	character_attack_done.emit()
 
 func enemies_done():
 	_update_obstacles()
+	
+	if _hand.size() == 0:
+		_hand = _discard
+		_discard = []
+		hand_updated.emit()
+		discard_updated.emit()
+	
 	_enemy_turn = false
 
 func get_name():
@@ -201,6 +209,9 @@ func get_hand():
 
 func has_discards():
 	return _discard.size() > 0
+
+func discrad_count():
+	return _discard.size()
 
 func get_selected_card_name():
 	return _selected_card_name
@@ -223,7 +234,7 @@ func get_character_path():
 func get_character_health():
 	return _character_health
 
-func set_character_health(new_health):
+func set_character_health(new_health, enemy_location):
 	if new_health < 0:
 		new_health = 0
 	
@@ -235,7 +246,7 @@ func set_character_health(new_health):
 	character_health_update.emit()
 	
 	if hurt:
-		charcter_hurt.emit()
+		charcter_hurt.emit(enemy_location)
 
 func get_character_health_maximum():
 	var character_data = Game.get_character()

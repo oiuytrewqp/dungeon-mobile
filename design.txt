@@ -1,3 +1,8 @@
+TODO:
+death and fail  and restart
+success and win
+
+
 states:
 1. no save
 2. no mission

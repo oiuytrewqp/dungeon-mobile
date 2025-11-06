@@ -11,6 +11,9 @@ func _ready() -> void:
 		mission_data.character_spawned.connect(_on_character_spawned)
 	
 	add_child(load("res://scenes/missions/%s.tscn" %Config.missions[mission_data.get_name()].map).instantiate())
+	
+	Game.character_dead.connect(_wait)
+	Game.mission_success.connect(_wait)
 
 func _on_character_spawned():
 	var character = Game.get_character()
@@ -19,4 +22,12 @@ func _on_character_spawned():
 	var character_scene = load("res://scenes/characters/chibi_%s.tscn" %model).instantiate()
 	character_scene.isCharacter = true
 	add_child(character_scene)
-	dolly.reparent(character_scene, false)
+	dolly.target = character_scene
+
+func _wait():
+	var tween = get_tree().create_tween()
+	tween.tween_interval(2)
+	tween.tween_callback(_change)
+
+func _change():
+	get_tree().change_scene_to_file("res://scenes/main.tscn")

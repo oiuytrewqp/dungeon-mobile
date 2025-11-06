@@ -2,11 +2,11 @@
 	"skeleton": {
 		"name": "Skeleton",
 		"health": {
-			"base": 5,
+			"base": 2,
 			"level": 1
 		},
 		"attack": {
-			"base": 2,
+			"base": 1,
 			"level": 0.5
 		},
 		"range": {

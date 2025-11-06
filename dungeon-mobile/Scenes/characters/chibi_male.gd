@@ -14,9 +14,9 @@ func _ready() -> void:
 	var mission_data = Game.get_current_mission()
 	if isCharacter:
 		var location = mission_data.get_character_location()
-		var rotation = mission_data.get_character_rotation()
+		var character_rotation = mission_data.get_character_rotation()
 		position = Hex.axial_to_position(Vector2(location.x, location.y))
-		rotation_degrees = Vector3(0, rotation, 0)
+		rotation_degrees = Vector3(0, character_rotation, 0)
 		name_label.text = character_data.get_name()
 		mission_data.character_path_updated.connect(_character_path_updated)
 		mission_data.character_attack.connect(_attack)
@@ -67,7 +67,7 @@ func _moved(moves, location):
 	
 	aniamtion_player.play("IdleSwordShield")
 
-func _attack(location, attack):
+func _attack(location, _attack):
 	var location2D = Vector2(global_position.x, global_position.z)
 	var attack_position = Hex.axial_to_position(location)
 	var attack_location = Vector2(attack_position.x, attack_position.z)
@@ -85,11 +85,19 @@ func _attack_done():
 	var mission_data = Game.get_current_mission()
 	mission_data.attack_done()
 
-func _hurt():
+func _hurt(enemy_location):
+	var location2D = Vector2(global_position.x, global_position.z)
+	var attack_position = Hex.axial_to_position(enemy_location)
+	var attack_location = Vector2(attack_position.x, attack_position.z)
+	var angle = 90 - rad_to_deg((attack_location - location2D).angle())
+	
+	rotation_degrees.y = angle
+	
 	var mission_data = Game.get_current_mission()
 	var new_health = mission_data.get_character_health()
 	if new_health == 0:
 		aniamtion_player.play("DieSwordShield")
+		Game.dead()
 	else:
 		aniamtion_player.play("HurtSwordShield")
 	
