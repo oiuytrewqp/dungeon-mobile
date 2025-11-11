@@ -6,13 +6,12 @@ var CARD_LARGE = preload("res://scenes/ui/card_large.tscn")
 @onready var container = %Container
 
 func _ready() -> void:
-	_update()
-	
 	var mission_data = Game.get_current_mission()
+
+	EventBus.character_spawned.connect(_show)
+	EventBus.hand_updated.connect(_update)
 	
-	mission_data.character_spawned.connect(_show)
-	
-	mission_data.hand_updated.connect(_update)
+	_update()
 
 func _show():
 	visible = true

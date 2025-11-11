@@ -2,9 +2,9 @@ extends Node3D
 
 func _ready() -> void:
 	var mission_data = Game.get_current_mission()
-	mission_data.selected_card_updated.connect(_show_attack_locations)
-	mission_data.character_location_updated.connect(_show_attack_locations)
-	mission_data.character_attack.connect(_character_attack)
+	EventBus.selected_card_updated.connect(_show_attack_locations)
+	EventBus.character_location_updated.connect(_show_attack_locations)
+	EventBus.character_attack.connect(_character_attack)
 
 func _clear():
 	for child in get_children():

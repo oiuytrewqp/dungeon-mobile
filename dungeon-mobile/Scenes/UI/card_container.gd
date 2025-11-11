@@ -6,11 +6,11 @@ extends PanelContainer
 @onready var actions_container = %ActionsContainer
 
 func _ready() -> void:
-	_update_all()
 	var current_mission = Game.get_current_mission()
-	current_mission.selected_card_updated.connect(_update_all)
-	current_mission.character_attack.connect(_character_attack)
-	current_mission.moves_available_updated.connect(_update_moves_available)
+	EventBus.selected_card_updated.connect(_update_all)
+	EventBus.character_attack.connect(_character_attack)
+	EventBus.moves_available_updated.connect(_update_moves_available)
+	_update_all()
 
 func _hide():
 	visible = false

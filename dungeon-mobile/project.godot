@@ -20,8 +20,10 @@ config/icon="res://icon.svg"
 Hex="*res://globals/hex.gd"
 Pathfinding="*res://globals/pathfinding.gd"
 Config="*res://globals/config.gd"
+GameState="*res://globals/game_state.gd"
 Save="*res://globals/save.gd"
 Game="*res://globals/game.gd"
+EventBus="*res://globals/event_bus.gd"
 
 [display]
 

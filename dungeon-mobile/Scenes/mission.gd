@@ -5,15 +5,16 @@ extends Node3D
 
 func _ready() -> void:
 	var mission_data = Game.get_current_mission()
+
 	if mission_data.is_character_spawned():
 		_on_character_spawned()
 	else:
-		mission_data.character_spawned.connect(_on_character_spawned)
-	
+		EventBus.character_spawned.connect(_on_character_spawned)
+
 	add_child(load("res://scenes/missions/%s.tscn" %Config.missions[mission_data.get_name()].map).instantiate())
-	
-	Game.character_dead.connect(_wait)
-	Game.mission_success.connect(_wait)
+
+	EventBus.character_dead.connect(_wait)
+	EventBus.mission_success.connect(_wait)
 
 func _on_character_spawned():
 	var character = Game.get_character()
@@ -30,4 +31,5 @@ func _wait():
 	tween.tween_callback(_change)
 
 func _change():
+	GameState.set_state(GameState.State.MAIN_MENU)
 	get_tree().change_scene_to_file("res://scenes/main.tscn")

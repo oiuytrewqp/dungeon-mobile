@@ -5,7 +5,7 @@ extends PanelContainer
 
 func _ready() -> void:
 	var current_mission = Game.get_current_mission()
-	current_mission.discard_updated.connect(_update)
+	EventBus.discard_updated.connect(_update)
 	_update()
 
 func _update():

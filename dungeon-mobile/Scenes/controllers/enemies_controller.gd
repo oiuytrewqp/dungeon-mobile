@@ -2,10 +2,11 @@ extends Node3D
 
 var _current_index = 0
 
-func _ready() -> void:
-	Game.get_current_mission().enemies_updated.connect(_on_enemies_updated)
-	Game.get_current_mission().character_attack.connect(_attack)
-	Game.get_current_mission().character_attack_done.connect(_enemy_actions)
+func _ready():
+	var mission_data = Game.get_current_mission()
+	EventBus.enemies_updated.connect(_on_enemies_updated)
+	EventBus.character_attack.connect(_attack)
+	EventBus.character_attack_done.connect(_enemy_actions)
 
 func _clear_enemies():
 	for child in get_children():

@@ -1,8 +1,10 @@
 extends Node3D
 
 func _ready() -> void:
-	Game.get_current_mission().spawn_locations_updated.connect(_on_spawn_locations_updated)
-	Game.get_current_mission().character_spawned.connect(_clear_spawns)
+	var mission = Game.get_current_mission()
+	EventBus.spawn_locations_updated.connect(_on_spawn_locations_updated)
+	EventBus.character_spawned.connect(_clear_spawns)
+	_on_spawn_locations_updated()
 
 func _clear_spawns():
 	for child in get_children():

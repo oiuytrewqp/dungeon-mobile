@@ -11,6 +11,7 @@ var _previous_global_position
 
 func _ready() -> void:
 	var character_data = Game.get_character()
+
 	var mission_data = Game.get_current_mission()
 	if isCharacter:
 		var location = mission_data.get_character_location()
@@ -18,17 +19,17 @@ func _ready() -> void:
 		position = Hex.axial_to_position(Vector2(location.x, location.y))
 		rotation_degrees = Vector3(0, character_rotation, 0)
 		name_label.text = character_data.get_name()
-		mission_data.character_path_updated.connect(_character_path_updated)
-		mission_data.character_attack.connect(_attack)
-		mission_data.character_health_update.connect(_update)
-		mission_data.charcter_hurt.connect(_hurt)
+		EventBus.character_path_updated.connect(_character_path_updated)
+		EventBus.character_attack.connect(_attack)
+		EventBus.character_health_update.connect(_update)
+		EventBus.charcter_hurt.connect(_hurt)
 		_update()
 	else:
 		pass
 	
 	_previous_global_position = Vector2(global_position.x, global_position.z)
 
-func _process(_delta: float) -> void:
+func _process(delta: float):
 	var location2D = Vector2(global_position.x, global_position.z)
 	
 	if _previous_global_position.is_equal_approx(location2D):

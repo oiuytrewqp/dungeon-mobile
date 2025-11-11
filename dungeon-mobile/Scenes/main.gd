@@ -19,6 +19,7 @@ func _on_profile_pressed() -> void:
 	items_panel.visible = false
 	cards_panel.visible = false
 	missions_panel.visible = false
+	GameState.set_state(GameState.State.MAIN_MENU)
 
 func _on_items_pressed() -> void:
 	profile_button.button_pressed = false
@@ -29,6 +30,7 @@ func _on_items_pressed() -> void:
 	items_panel.visible = true
 	cards_panel.visible = false
 	missions_panel.visible = false
+	GameState.set_state(GameState.State.MAIN_MENU)
 
 func _on_cards_pressed() -> void:
 	profile_button.button_pressed = false
@@ -39,6 +41,7 @@ func _on_cards_pressed() -> void:
 	items_panel.visible = false
 	cards_panel.visible = true
 	missions_panel.visible = false
+	GameState.set_state(GameState.State.MAIN_MENU)
 
 func _on_missions_pressed() -> void:
 	profile_button.button_pressed = false
@@ -49,3 +52,4 @@ func _on_missions_pressed() -> void:
 	items_panel.visible = false
 	cards_panel.visible = false
 	missions_panel.visible = true
+	GameState.set_state(GameState.State.MISSION_SELECT)

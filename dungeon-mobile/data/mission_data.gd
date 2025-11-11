@@ -1,21 +1,5 @@
 class_name MissionData
 
-signal spawn_locations_updated()
-signal enemies_updated()
-signal character_spawned()
-signal selected_card_updated()
-signal character_path_updated()
-signal moves_available_updated()
-signal character_location_updated()
-
-signal character_attack(enemy, attack)
-signal character_attack_done()
-
-signal character_health_update()
-signal charcter_hurt(enemy_location)
-
-signal hand_updated()
-signal discard_updated()
 
 var _name
 var _move_locations : Array[Vector2i]
@@ -94,7 +78,7 @@ func load(data):
 
 func set_spawn_locations(new_spawn_locations):
 	_spawn_locations = new_spawn_locations
-	spawn_locations_updated.emit()
+	EventBus.spawn_locations_updated.emit()
 
 func set_move_locations(new_move_locations):
 	_move_locations = new_move_locations
@@ -122,14 +106,14 @@ func set_enemies(new_enemies):
 		}
 		_enemies.append(new_enemy)
 	_update_obstacles()
-	enemies_updated.emit()
+	EventBus.enemies_updated.emit()
 
 func set_character_location(new_location, new_rotation):
 	var spawned = _character_location == null
 	_character_location = new_location
 	_character_rotation = new_rotation
 	if spawned:
-		character_spawned.emit()
+		EventBus.character_spawned.emit()
 
 func set_selected_card_name(new_card_name):
 	if _selected_card_name != null || _enemy_turn:
@@ -139,9 +123,9 @@ func set_selected_card_name(new_card_name):
 	_discard.append(new_card_name)
 	_hand.erase(new_card_name)
 	_moves_available = Config.cards[_selected_card_name].moves
-	selected_card_updated.emit()
-	hand_updated.emit()
-	discard_updated.emit()
+	EventBus.selected_card_updated.emit()
+	EventBus.hand_updated.emit()
+	EventBus.discard_updated.emit()
 
 func move_character(location):
 	if _character_moving || _enemy_turn:
@@ -149,15 +133,15 @@ func move_character(location):
 	
 	_character_moving = true
 	_character_path = Pathfinding.find_path(_character_location, location)
-	character_path_updated.emit()
+	EventBus.character_path_updated.emit()
 
 func character_moved():
 	_character_moving = false
-	character_location_updated.emit()
+	EventBus.character_location_updated.emit()
 
 func set_moves_available(new_moves_available):
 	_moves_available = new_moves_available
-	moves_available_updated.emit()
+	EventBus.moves_available_updated.emit()
 
 func enemy_at_location(location):
 	for enemy in _enemies:
@@ -172,14 +156,14 @@ func attack(location):
 	
 	_character_attacking = true
 	set_moves_available(0)
-	character_attack.emit(location, Config.cards[_selected_card_name].attack)
+	EventBus.character_attack.emit(location, Config.cards[_selected_card_name].attack)
 
 func attack_done():
 	_selected_card_name = null
 	_character_attacking = false
 	set_moves_available(0)
 	_enemy_turn = true
-	character_attack_done.emit()
+	EventBus.character_attack_done.emit()
 
 func enemies_done():
 	_update_obstacles()
@@ -187,8 +171,8 @@ func enemies_done():
 	if _hand.size() == 0:
 		_hand = _discard
 		_discard = []
-		hand_updated.emit()
-		discard_updated.emit()
+		EventBus.hand_updated.emit()
+		EventBus.discard_updated.emit()
 	
 	_enemy_turn = false
 
@@ -243,10 +227,10 @@ func set_character_health(new_health, enemy_location):
 		hurt = true
 	
 	_character_health = new_health
-	character_health_update.emit()
+	EventBus.character_health_update.emit()
 	
 	if hurt:
-		charcter_hurt.emit(enemy_location)
+		EventBus.charcter_hurt.emit(enemy_location)
 
 func get_character_health_maximum():
 	var character_data = Game.get_character()

@@ -1,7 +1,5 @@
 extends Node
 
-signal character_dead()
-signal mission_success()
 
 var _data
 
@@ -65,15 +63,18 @@ func set_current_mission(new_current_mission):
 	_data.current_mission.setup(new_current_mission, get_character().get_hand())
 	
 	save()
+	GameState.set_state(GameState.State.IN_MISSION)
 
 func dead():
 	_data.current_mission = null
 	
-	character_dead.emit()
+	EventBus.character_dead.emit()
+	GameState.set_state(GameState.State.GAME_OVER)
 
 func no_enemies():
 	_data.previous_mission = _data.current_mission
 	_data.completed_missions.append(_data.current_mission)
 	_data.current_mission = null
 	
-	mission_success.emit()
+	EventBus.mission_success.emit()
+	GameState.set_state(GameState.State.MISSION_COMPLETE)
